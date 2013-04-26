@@ -306,7 +306,7 @@ background-color: lightyellow !important;
 
 .il-title a {
 display:block;
-/*font-weight: bold; */
+font-weight: bold; 
 color:#333;
 }
 
@@ -848,7 +848,7 @@ color:white;
 		/*background-color:#fff;*/
 	}
 
-	.i-main p {
+	.i-main p, .i-main img {
 	display: inline-block;
 	width:100%	
 	}
