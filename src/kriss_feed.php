@@ -85,8 +85,28 @@ $kfc = new FeedConf(CONFIG_FILE, FEED_VERSION);
 $kf = new Feed(DATA_FILE, CACHE_DIR, $kfc);
 $ks = new Star(STAR_FILE, ITEM_FILE, $kfc);
 
+
+/*
 $pb = new PageBuilder('FeedPage');
 $kfp = new FeedPage(STYLE_FILE);
+*/
+
+// std or alt ?
+$tpl = $kfc->tpl;
+
+if ($tpl == 'std') {
+	$pb = new PageBuilder('FeedPage');
+	$kfp = new FeedPage(STYLE_FILE); 
+     }
+else if ($tpl == 'alt') {
+	$pb = new PageBuilder('altFeedPage');
+	$kfp = new altFeedPage(STYLE_FILE);
+	}
+else {
+	$pb = new PageBuilder('FeedPage');
+	$kfp = new FeedPage(STYLE_FILE); 
+}
+	
 
 // List or Expanded ?
 $view = $kfc->view;

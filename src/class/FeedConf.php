@@ -44,7 +44,7 @@ class FeedConf
      * locale
      */
     public $locale = 'en_GB';
-
+    
     /**
      * Shaarli link
      */
@@ -114,6 +114,11 @@ class FeedConf
      * Default view (expanded or list)
      */
     public $view = 'list';
+    
+    /**
+     * Default tpl (std or alt)
+     */
+    public $tpl = 'std';
 
     /**
      * filter ('unread' or 'all' items)
@@ -124,8 +129,8 @@ class FeedConf
      * Show list of feeds
      */
     public $listFeeds = 'show';
-
-    /**
+	
+	/**
      * Number of entries to display per page
      */
     public $byPage = 10;
@@ -199,6 +204,7 @@ class FeedConf
 
         if ($this->isLogged()) {
             unset($_SESSION['view']);
+            unset($_SESSION['tpl']);
             unset($_SESSION['listFeeds']);
             unset($_SESSION['filter']);
             unset($_SESSION['order']);
@@ -206,18 +212,21 @@ class FeedConf
         }
 
         $view = $this->getView();
+        $tpl = $this->getTpl();
         $listFeeds = $this->getListFeeds();
         $filter = $this->getFilter();
         $order = $this->getOrder();
         $byPage = $this->getByPage();
 
         if ($this->view != $view
+            || $this->tpl != $tpl
             || $this->listFeeds != $listFeeds
             || $this->filter != $filter
             || $this->order != $order
             || $this->byPage != $byPage
         ) {
             $this->view = $view;
+            $this->tpl = $tpl;
             $this->listFeeds = $listFeeds;
             $this->filter = $filter;
             $this->order = $order;
@@ -228,6 +237,7 @@ class FeedConf
 
         if (!$this->isLogged()) {
             $_SESSION['view'] = $view;
+            $_SESSION['tpl'] = $tpl;
             $_SESSION['listFeeds'] = $listFeeds;
             $_SESSION['filter'] = $filter;
             $_SESSION['order'] = $order;
@@ -304,6 +314,28 @@ class FeedConf
         }
 
         return $view;
+    }
+
+    /**
+     * Get current tpl (std or alt)
+     *
+     * @return string 'std' or 'alt'
+     */
+    public function getTpl()
+    {
+        $tpl = $this->tpl;
+        if (isset($_GET['tpl'])) {
+            if ($_GET['tpl'] == 'std') {
+                $tpl = 'std';
+            }
+            if ($_GET['tpl'] == 'alt') {
+                $tpl = 'alt';
+            }
+        } else if (isset($_SESSION['tpl'])) {
+            $tpl = $_SESSION['tpl'];
+        }
+
+        return $tpl;
     }
 
     /**
@@ -789,7 +821,7 @@ class FeedConf
     {
         if ($this->isLogged() || !is_file($this->_file)) {
             $data = array('login', 'hash', 'salt', 'title', 'redirector', 'shaarli',
-                          'byPage', 'order', 'visibility', 'filter', 'view','locale',
+                          'byPage', 'order', 'visibility', 'filter', 'view','tpl','locale',
                           'maxItems',  'autoreadItem', 'autoreadPage', 'maxUpdate',
                           'autohide', 'autofocus', 'listFeeds', 'autoUpdate', 'menuView',
                           'menuListFeeds', 'menuFilter', 'menuOrder', 'menuUpdate',
