@@ -4,14 +4,16 @@
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span4 offset4">
+<header>
+	<ul class="bar">
+		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt;</a></li>
+	</ul>
+</header>
           <?php altFeedPage::statusTpl(); ?>
           <form class="form-horizontal" method="post" action="?import" enctype="multipart/form-data">
             <fieldset>
               <legend>Import Opml file</legend>
-              Import an opml file as exported by Google Reader, Tiny Tiny RSS, RSS lounge...
+              <div class="small">Import an opml file as exported by Google Reader, Tiny Tiny RSS, RSS lounge...</div>
               
               <div class="control-group">
                 <label class="control-label" for="filetoupload">File (Size max: <?php echo MyTool::humanBytes(MyTool::getMaxFileSize()); ?>)</label>
@@ -41,8 +43,11 @@
               <input type="hidden" name="token" value="<?php echo Session::getToken(); ?>">
             </fieldset>
           </form>
-        </div>
-      </div>
-    </div>
+<div id="menu">
+	<ul class="menucom">
+		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+	</ul>
+</div>
+        
   </body>
 </html> 

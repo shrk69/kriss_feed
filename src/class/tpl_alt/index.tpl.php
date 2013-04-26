@@ -1,47 +1,54 @@
-<!DOCTYPE html>
-<html>
-  <head>
+<!doctype html>
+<!--[if lte IE 6]> <html class="no-js ie6 ie67 ie678" lang="fr"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 ie67 ie678" lang="fr"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 ie678" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
     <?php altFeedPage::includesTpl(); ?>
-  </head>
-  <body>
-<div id="index" class="container-fluid full-height" data-view="<?php echo $view; ?>" data-list-feeds="<?php echo $listFeeds; ?>" data-filter="<?php echo $filter; ?>" data-order="<?php echo $order; ?>" data-by-page="<?php echo $byPage; ?>" data-autoread-item="<?php echo $autoreadItem; ?>" data-autoread-page="<?php echo $autoreadPage; ?>" data-autohide="<?php echo $autohide; ?>" data-current-hash="<?php echo $currentHash; ?>" data-current-page="<?php echo $currentPage; ?>" data-nb-items="<?php echo $nbItems; ?>" data-shaarli="<?php echo $shaarli; ?>" data-redirector="<?php echo $redirector; ?>" data-autoupdate="<?php echo $autoupdate; ?>" data-autofocus="<?php echo $autofocus; ?>" data-add-favicon="<?php echo $addFavicon; ?>" data-is-logged="<?php echo $isLogged; ?>" data-blank="<?php echo $blank; ?>"<?php if (isset($_GET['stars'])) { echo ' data-stars="1"'; } ?>>
-      <div class="row-fluid full-height">
-        <?php if ($listFeeds == 'show') { ?>
-        <div id="main-container" class="span9 full-height">
-          <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
-          <div id="paging-up">
-            <?php if (!empty($paging)) {altFeedPage::pagingTpl();} ?>
-          </div>
-          <?php altFeedPage::listItemsTpl(); ?>
-          <div id="paging-down">
-            <?php if (!empty($paging)) {altFeedPage::pagingTpl();} ?>
-          </div>
-        </div>
-        <div id="minor-container" class="span3 full-height minor-container">
-          <?php altFeedPage::listFeedsTpl(); ?>
-        </div>
-        <?php } else { ?>
-        <div id="main-container" class="span12 full-height">
-          <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
-          <div id="paging-up">
-            <?php if (!empty($paging)) {altFeedPage::pagingTpl();} ?>
-          </div>
-          <?php altFeedPage::listItemsTpl(); ?>
-          <div id="paging-down">
-            <?php if (!empty($paging)) {altFeedPage::pagingTpl();} ?>
-          </div>
-        </div>
+</head>
+<body>
+	  <a id="haut"></a>
+    <div id="index" class="container-fluid full-height" data-view="<?php echo $view; ?>" data-list-feeds="<?php echo $listFeeds; ?>" data-filter="<?php echo $filter; ?>" data-order="<?php echo $order; ?>" data-by-page="<?php echo $byPage; ?>" data-autoread-item="<?php echo $autoreadItem; ?>" data-autoread-page="<?php echo $autoreadPage; ?>" data-autohide="<?php echo $autohide; ?>" data-current-hash="<?php echo $currentHash; ?>" data-current-page="<?php echo $currentPage; ?>" data-nb-items="<?php echo $nbItems; ?>" data-shaarli="<?php echo $shaarli; ?>" data-redirector="<?php echo $redirector; ?>" data-autoupdate="<?php echo $autoupdate; ?>" data-autofocus="<?php echo $autofocus; ?>" data-add-favicon="<?php echo $addFavicon; ?>">
+    
+    <?php altFeedPage::statusTpl(); ?>
+	
+	 <?php if (isset($_GET['open'])) { ?>
+		
+<!-- ITEM ----------------------------------------------->				
+          <?php altFeedPage::itemTpl(); ?>
+	
+	<?php }  else  if (isset($_GET['feedview'])) { ?>   
+
+<!-- FEEDs LIST ----------------------------------------------->			
+		
+			<?php altFeedPage::listFeedsTpl(); ?>
+ 
+     
+     <?php }
+     else { ?>   
+	
+<!-- ITEMs LIST ----------------------------------------------->	
+    
+			<?php altFeedPage::listItemsTpl(); ?>
+		        
         <?php } ?>
-      </div>
+        
+    <a class="inbl small txtright mr1" href="?tpl=std">Switch to standard template</a>
+    <br>
+    <br>
     </div>
-    <?php if (is_file('inc/script.js')) { ?>
-    <script type="text/javascript" src="inc/script.js?version=<?php echo $version;?>"></script>
-    <?php } else { ?>
-    <script type="text/javascript">
-      <?php include("inc/script.js"); ?>
-    </script>
-    <?php } ?>
-  </body>
+    
+   
+<!--
+	<!?php if (is_file('inc/script.js')) { ?>
+	<script type="text/javascript" src="inc/script.js?version=<!?php echo $version;?>"></script>
+	<!?php } else { ?>
+	<script type="text/javascript">
+	<!?php include("inc/script.js"); ?>
+	</script>
+	<!?php } ?>
+-->
+
+
+</body>
 </html>

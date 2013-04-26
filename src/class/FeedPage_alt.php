@@ -245,6 +245,18 @@ class altFeedPage
 <?php
     }
 
+   /**
+     * altitemTpl : Full display opened current item
+     * 
+     */
+    public static function itemTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<?php include("tpl_alt/item.tpl.php"); ?>
+<?php
+    } 
+    
     /**
      * indexTpl : index page
      * 
@@ -257,3 +269,6 @@ class altFeedPage
 <?php
     }
 }
+
+
+ 

@@ -4,28 +4,39 @@
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
-    <div class="container-fluid full-height">
-      <div class="row-fluid full-height">
-        <div class="span12 full-height">
-          <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
-          <div class="container-fluid">
-            <div class="row-fluid">
-              <div class="span6 offset3">
-                <ul class="unstyled">
+             <?php altFeedPage::statusTpl(); ?>
+         
+<header>          
+         <ul class="bar">
+		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
+		</ul>
+</header>      
+
+                <br>                              
+                
+                <ul class="">
                   <?php $kf->updateFeedsHash($feedsHash, $forceUpdate, 'html')?>
                 </ul>
-                <a class="btn" href="?">Go home</a>
-                <?php if (!empty($referer)) { ?>
-                <a class="btn" href="<?php echo htmlspecialchars($referer); ?>">Go back</a>
-                <?php } ?>
-                <a class="btn" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                
+                <br>
+                
+            <div id="menu">
+	<ul class="menucom">
+		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		</ul>                                    
+<!--
+               <a class="btn" href="?">Go home</a>
+-->
+   
+<footer>          
+         <ul class="bar fixdown">
+		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
+		</ul>
+</footer>        
+   
+             
     <script type="text/javascript">
       <?php /* include("inc/script.js"); */ ?>
     </script>

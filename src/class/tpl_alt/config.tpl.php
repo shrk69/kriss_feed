@@ -2,11 +2,20 @@
 <html>
   <head><?php altFeedPage::includesTpl(); ?></head>
   <body>
+	  <a id="haut"></a>
+<header>
+	<ul class="bar">
+		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt;</a></li>
+		<li><a class="txtright pr1" href="?config#menu" >Menu</a></li>
+	</ul>
+</header>
+	  
+	  
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span6 offset3">
           <div id="config">
-            <?php altFeedPage::navTpl(); ?>
+            <!--?php altFeedPage::navTpl(); ?-->
             <div id="section">
               <form class="form-horizontal" method="post" action="">
                 <input type="hidden" name="token" value="<?php echo Session::getToken(); ?>">
@@ -175,20 +184,6 @@
                   </div>
 
                   <div class="control-group">
-                    <label class="control-label">Auto target="_blank"</label>
-                    <div class="controls">
-                      <label for="donotblank">
-                        <input type="radio" id="donotblank" name="blank" value="0" <?php echo (!$kfcblank ? 'checked="checked"' : ''); ?>/>
-                        Do not open link in new tab
-                      </label>
-                      <label for="doblank">
-                        <input type="radio" id="doblank" name="blank" value="1" <?php echo ($kfcblank ? 'checked="checked"' : ''); ?>/>
-                        Automatically open link in new tab
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="control-group">
                     <label class="control-label">Auto update with javascript</label>
                     <div class="controls">
                       <label for="donotautoupdate">
@@ -283,13 +278,6 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <label class="control-label" for="menuStars">Starred</label>
-                    <div class="controls">
-                      <input type="text" id="menuStars" name="menuStars" value="<?php echo empty($kfcmenu['menuStars'])?'0':$kfcmenu['menuStars']; ?>">
-                      <span class="help-block">If you want to add a link to the starred items</span>
-                    </div>
-                  </div>
-                  <div class="control-group">
                     <div class="controls">
                       <input class="btn" type="submit" name="cancel" value="Cancel"/>
                       <input class="btn" type="submit" name="save" value="Save" />
@@ -337,24 +325,12 @@
                   <legend>Cron configuration</legend>
                   <code><?php echo MyTool::getUrl().'?update&cron='.$kfccron; ?></code>
                   You can use <code>&force</code> to force update.<br>
-                  To update every 15 minutes:<br>
+                  To update every 15 minutes
                   <code>*/15 * * * * wget "<?php echo MyTool::getUrl().'?update&cron='.$kfccron; ?>" -O /tmp/kf.cron</code><br>
-                  To update every hour:<br>
+                  To update every hour
                   <code>0 * * * * wget "<?php echo MyTool::getUrl().'?update&cron='.$kfccron; ?>" -O /tmp/kf.cron</code><br>
-                  If you can not use wget, you may try php command line:<br>
-                  <code>0 * * * * php -f <?php echo $_SERVER["SCRIPT_FILENAME"].' update '.$kfccron; ?> > /tmp/kf.cron</code><br>
-                  If previous solutions do not work, try to create an update.php file into data directory containing:<br>
-                  <code>
-                  &lt;?php<br>
-                  $url = "<?php echo MyTool::getUrl().'?update&cron='.$kfccron; ?>";<br>
-                  $options = array('http'=>array('method'=>'GET'));<br>
-                  $context = stream_context_create($options);<br>
-                  $data=file_get_contents($url,false,$context);<br>
-                  print($data);
-                  </code><br>
-                  Then set up your cron with:<br>
-                  <code>0 * * * * php -f <?php echo dirname($_SERVER["SCRIPT_FILENAME"]).'/data/update.php'; ?> > /tmp/kf.cron</code><br>
-                  Don't forget to check right permissions !<br>
+                  If you can not use wget, you may try php command line :
+                  <code>0 * * * * php -f <?php echo $_SERVER["SCRIPT_FILENAME"].' update '.$kfccron; ?> > /tmp/kf.cron</code>
                   <div class="control-group">
                     <div class="controls">
                       <input class="btn" type="submit" name="cancel" value="Cancel"/>
@@ -368,5 +344,26 @@
         </div>
       </div>
     </div>
+    
+
+<div id="menu">
+	<ul class="menucom">
+		<li><a href="?password" class="admin" title="Change your password">Change password</a></li>
+        <li><a href="?import" class="admin" title="Import OPML file">Import</a></li>
+        <li><a href="?export" class="admin" title="Export OPML file">Export</a></li>
+        <li><a href="?logout" class="admin" title="Logout">Logout</a></li>
+		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+	</ul>
+</div>
+    
+    
+<footer>
+	<ul class="bar fixdown">
+		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li><a class="txtcenter" href="?config#haut">Top ^</a></li>
+		<li ><a class="txtright pr1" href="?config#menu">Menu</a></li>
+	</ul>
+</footer>
+	
   </body>
 </html>

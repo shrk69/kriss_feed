@@ -884,12 +884,33 @@ if (isset($_GET['login'])) {
             break;
         }
 
+// +-       
+        $altHashView = '';
+        switch($currentHashType){
+        case 'all':
+            $altHashView = 'All feeds';
+             break;
+		case 'feed':
+            $altHashView = '<a href="'.$kf->getFeedHtmlUrl($currentHash).'" title="">'.$kf->getFeedTitle($currentHash).'</a>';
+            break;
+        case 'folder':
+            $altHashView = $kf->getFolderTitle($currentHash);
+            break;
+        default:
+            $altHashView = '<span id="nb-unread">'.$unread.'</span><span class="hidden-phone"> unread items</span>';
+            break;
+        }
+// +-
+
+
         $menu = $kfc->getMenu();
         $paging = $kfc->getPaging();
         $pb->assign('menu',  $menu);
         $pb->assign('paging',  $paging);
         $pb->assign('currentHashType', $currentHashType);
         $pb->assign('currentHashView', $hashView);
+        $pb->assign('altCurrentHashView', $altHashView);
+        $pb->assign('altCurrentHashUnread', $unread);
         $pb->assign('currentPage',  (int) $currentPage);
         $pb->assign('maxPage', (int) $maxPage);
         $pb->assign('currentItemHash', $currentItemHash);

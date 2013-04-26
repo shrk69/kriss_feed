@@ -17,6 +17,7 @@
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
+          <a href="?tpl=alt">Switch to alternative template</a>
         </div>
         <div id="minor-container" class="span3 full-height minor-container">
           <?php FeedPage::listFeedsTpl(); ?>
@@ -32,6 +33,7 @@
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
+          <a href="?tpl=alt">Switch to alternative template</a>
         </div>
         <?php } ?>
       </div>
@@ -43,5 +45,5 @@
       <?php include("inc/script.js"); ?>
     </script>
     <?php } ?>
-  </body>
+    </body>
 </html>

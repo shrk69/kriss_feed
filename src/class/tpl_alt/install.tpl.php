@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <?php altFeedPage::includesTpl(); ?>
+    <?php FeedPage::includesTpl(); ?>
   </head>
   <body>
     <div class="container-fluid">
@@ -31,7 +31,7 @@
                 <input type="hidden" name="token" value="<?php echo Session::getToken(); ?>">
               </fieldset>
             </form>
-            <?php altFeedPage::statusTpl(); ?>
+            <?php FeedPage::statusTpl(); ?>
           </div>
         </div>
         <script>
