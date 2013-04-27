@@ -3,30 +3,7 @@
  * altFeedPage
  */
  
- 
- /*
-if (isset($_GET['tplalt'])) {
- $_SESSION['tpl'] = "alt";
- echo 'alt';
-}
-if (isset($_GET['tplstd'])) {
- $_SESSION['tpl'] = "std";
-}
-*/
-/*
-if ( $_SESSION['tpl'] == 'alt';) {
-$pb = new PageBuilder('altFeedPage');
-$kfp = new FeedPage(STYLE_FILE);
- }
- 
-if ( $_SESSION['tpl'] == 'std';) {
-$pb = new PageBuilder('FeedPage');
-$kfp = new FeedPage(STYLE_FILE);
- }
- 
- */
- 
-class altFeedPage
+ class altFeedPage
 {
     public static $var = array();
     private static $_instance;
@@ -86,18 +63,6 @@ class altFeedPage
         extract(altFeedPage::$var);
 ?>
 <?php include("tpl_alt/change_password.tpl.php"); ?>
-<?php
-    }
-
-    /**
-     * navTpl
-     * 
-     */
-    public static function navTpl()
-    {
-        extract(altFeedPage::$var);
-?>
-<?php include("tpl_alt/nav.tpl.php"); ?>
 <?php
     }
 
@@ -233,17 +198,6 @@ class altFeedPage
 <?php
     }
 
-    /**
-     * pagingTpl : pagination div
-     * 
-     */
-    public static function pagingTpl()
-    {
-        extract(altFeedPage::$var);
-?>
-<?php include("tpl_alt/paging.tpl.php"); ?>
-<?php
-    }
 
    /**
      * altitemTpl : Full display opened current item

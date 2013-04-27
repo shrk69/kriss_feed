@@ -81,6 +81,10 @@ echo($buffer);
 </style>
 
 
+<!-- 
+soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
+-->
+<script type="text/javascript">function scrollid(element){   var ele = document.getElementById(element);   window.scrollTo(ele.offsetLeft,ele.offsetTop); }</script>
 
 
 

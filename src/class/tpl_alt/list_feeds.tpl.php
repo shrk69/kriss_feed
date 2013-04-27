@@ -8,7 +8,7 @@
 <!--
 			<li><a class="txtcenter" href="<?php echo $query.'update='.$currentHash; ?>"  title="Update <?php echo $currentHashType; ?> manually">Up!</a></li>
 -->
-			<li><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer">Menu</a></li>
+			<li><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer" onClick="scrollid('lf-footer');return false;">Menu</a></li>
 	</ul>
 </header>
 
@@ -200,14 +200,16 @@
 		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
 		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
 		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
+		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
 	</ul>
 </div>
 
 <footer>
 	<ul class="bar fixdown">
 		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php echo $query.'&amp;feedview'; ?>#haut">Top ^</a></li>
-		<li ><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer"  Title="Jump to item menu">Menu</a></li>
+		<li><a class="txtcenter" href="<?php echo $query.'&amp;feedview'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li ><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer"  onClick="scrollid('lf-footer');return false;">Menu</a></li>
 	</ul>
 </footer>	
 

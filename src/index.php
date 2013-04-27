@@ -658,30 +658,7 @@ class FeedConf
 }
 
  
- 
- /*
-if (isset($_GET['tplalt'])) {
- $_SESSION['tpl'] = "alt";
- echo 'alt';
-}
-if (isset($_GET['tplstd'])) {
- $_SESSION['tpl'] = "std";
-}
-*/
-/*
-if ( $_SESSION['tpl'] == 'alt';) {
-$pb = new PageBuilder('altFeedPage');
-$kfp = new FeedPage(STYLE_FILE);
- }
- 
-if ( $_SESSION['tpl'] == 'std';) {
-$pb = new PageBuilder('FeedPage');
-$kfp = new FeedPage(STYLE_FILE);
- }
- 
- */
- 
-class altFeedPage
+ class altFeedPage
 {
     public static $var = array();
     private static $_instance;
@@ -721,7 +698,7 @@ body {
 	color:#333;
 	font-size: 1.3em;
 	background-color:#eee;
-	padding-bottom: 40px;
+	padding-bottom: 50px;
 	
 }
 
@@ -755,10 +732,10 @@ ul.bar > li > a {
 text-transform: uppercase;
 /*line-height:1.5em;*/
 display: block;
-padding:10px 20px;
+padding:15px 20px;
 background-color: #ddd;
 color: #777;
-padding:15px 20px;
+	font-weight: bold;
 }
 
 ul.bar > li > a:hover {
@@ -944,10 +921,10 @@ padding: 20px 10px 5px 10px;
 
 .il-feed {
 line-height: 1.1em;
-color: #777;
+color: #aaa;
 }
 .il-feed > a {
-color: #777;
+color: #aaa;
 }
 
 
@@ -998,7 +975,7 @@ padding: 0 10px 10px 10px;
 display:inline-block;
 width:100%;
 background-color: #fff;
-padding: 15px 5px 10px 10px;
+padding: 10px 5px 5px 15px;
 border-top: 1px solid #ddd;
 border-left: 1px solid #ddd;
 border-right: 1px solid #ddd;
@@ -1021,9 +998,16 @@ background-color: lightyellow !important;
 
 .il-title a {
 display:block;
-/*font-weight: bold; */
+font-weight: bold; 
 color:#333;
 }
+.il-title a:hover {
+display:block;
+font-weight: bold; 
+color:#000;
+}
+
+
 
 .il-item.read .il-title a {
 display:block;
@@ -1037,7 +1021,7 @@ color:#777;
 .il-url { color:#777;}
 
 .il-author > a { 
-color:darkgreen;
+color:#aaa;
 font-size: 1em;
 }
 
@@ -1538,7 +1522,7 @@ color:white;
 		color:#777;
 	}
 
-	div.fl-main,  div.il-main {
+	div.fl-main,  div.il-main, div#il-footer {
 		/*margin:0px 10px;*/
 		column-width: 20em;
 		column-gap: 10px;
@@ -1551,7 +1535,7 @@ color:white;
 		/*background-color:#fff;*/
 	}
 
-	.i-main p {
+	.i-main p, .i-main img {
 	display: inline-block;
 	width:100%	
 	}
@@ -1632,6 +1616,10 @@ echo($buffer);
 </style>
 
 
+<!-- 
+soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
+-->
+<script type="text/javascript">function scrollid(element){   var ele = document.getElementById(element);   window.scrollTo(ele.offsetLeft,ele.offsetTop); }</script>
 
 
 
@@ -1808,37 +1796,6 @@ echo($buffer);
 </div>
   </body>
 </html>
-<?php
-    }
-
-    public static function navTpl()
-    {
-        extract(altFeedPage::$var);
-?>
-	
-	<ul id="h-tab" class="tab tab-invert bigger">
-		<li><a class="txtleft pl1 icon-bracket2-" href="<?php echo $query.'&amp;feedview'; ?>" Title="Jump to feed list">&lt;</a></li>
-		
-		<li><a href="<?php echo $query.'update='.$currentHash; ?>" class="admin" title="Update <?php echo $currentHashType; ?> manually">Lulu</a></li>
-		
-		<li><a class="txtright pr1 icon-nav-" href="#"  onclick="toggle('h-drop')">Menu</a></li>
-	</ul>
-	
-<!--
-	<ul id="h-drop" class="drop big" style="display:none;">
-		<li><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
-		<?php if ($kf->kfc->isLogged()) { ?>
-          <li><a href="?config" class="admin" title="Configuration">Configuration</a></li>
-          <?php } ?>
-		<?php if (Session::isLogged()) { ?>
-          <li><a href="?logout" class="admin" title="Logout">Logout</a></li>
-          <?php } else { ?>
-          <li><a href="?login">Login</a></li>
-          <?php } ?>
-		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
-		<li >About <a href="#">Lulu Reader <span class="small">(2.0.3)</span></a> by <a href="#">Tontof</a></li>
-	</ul>
--->
 <?php
     }
 
@@ -2654,7 +2611,7 @@ echo($buffer);
          
 <header>          
          <ul class="bar">
-		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<li><a class="txtleft" href="<?php echo $query."".$currentHash; ?>"><</a></li>
 		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
 		</ul>
 </header>      
@@ -2677,7 +2634,8 @@ echo($buffer);
    
 <footer>          
          <ul class="bar fixdown">
-		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<!--li><a class="txtleft" href="<!?php  if (!empty($referer) && !isset($_GET['force']))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li-->
+		<li><a class="txtleft" href="<?php echo $query."".$currentHash; ?>"><</a></li>
 		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
 		</ul>
 </footer>        
@@ -2765,7 +2723,7 @@ echo($buffer);
 <!--
 			<li><a class="txtcenter" href="<?php echo $query.'update='.$currentHash; ?>"  title="Update <?php echo $currentHashType; ?> manually">Up!</a></li>
 -->
-			<li><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer">Menu</a></li>
+			<li><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer" onClick="scrollid('lf-footer');return false;">Menu</a></li>
 	</ul>
 </header>
 
@@ -2957,14 +2915,16 @@ echo($buffer);
 		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
 		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
 		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
+		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
 	</ul>
 </div>
 
 <footer>
 	<ul class="bar fixdown">
 		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php echo $query.'&amp;feedview'; ?>#haut">Top ^</a></li>
-		<li ><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer"  Title="Jump to item menu">Menu</a></li>
+		<li><a class="txtcenter" href="<?php echo $query.'&amp;feedview'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li ><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer"  onClick="scrollid('lf-footer');return false;">Menu</a></li>
 	</ul>
 </footer>	
 
@@ -2982,7 +2942,7 @@ echo($buffer);
 	<ul class="bar">
 		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt;</a></li>
 		<li><a class="txtcenter" href="<?php echo $query.'update='.$currentHash; ?>#menu" title="Update <?php echo $currentHashType; ?> manually">Update</a></li>
-		<li><a class="txtright pr1" href="#il-footer" >Menu</a></li>
+		<li><a class="txtright pr1" href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
 	</ul>
 </header>
 
@@ -3103,7 +3063,9 @@ echo($buffer);
 		<?php } else { ?><li><a href="?login">Login</a></li><?php } ?>
 		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
 		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
-		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a> </li>
+		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
+		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
 	</ul>
 </div>
 
@@ -3112,7 +3074,7 @@ echo($buffer);
 	<ul  class="bar fixdown">
 		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Jump to feed list">&lt;</a></li>
 		<li><a class="txtcenter"   href="<?php echo $query.$currentHash; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
-		<li><a class="txtright pr1" href="#il-footer" >Menu</a></li>
+		<li><a class="txtright pr1" href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
 	</ul>
 </footer>
 
@@ -3121,70 +3083,6 @@ echo($buffer);
 <?php
     }
 
-    public static function pagingTpl()
-    {
-        extract(altFeedPage::$var);
-?>
-	<div id="itemlist-header">
-		
-		<div id="il-h-title">
-			<h2>
-<!--
-				<img class="pb1" src="<!?php echo $kf->getFaviconFeed($feedHash); ?>" height="24px" width="24px" title="favicon" alt="favicon"/>
--->
-			<?php if (isset($currentHashView)) { ?><?php echo $currentHashView ?><?php } ?>
-			</h2>
-
-		</div>
-		
-		<ul id="il-h-tab" class=" tab big">
-			<li><a class="txtleft pl1" href="<?php echo $query.'read='.$currentHash; ?>"  title="Mark <?php echo $currentHashType; ?> as read"><?php echo $currentHashViewNbUnread ?> <span class="smaller">UNREAD</span></a></li>
-			<li><a class="icon-nav txtright pr1" href="#" onclick="toggle('il-h-drop')"></a></li>
-		</ul>
-		<ul id="il-h-drop" class="drop big" style="display:none;">
-			
-			<?php if ($filter === 'unread') { ?>
-         <li>Filter :  Unread / <a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">All</a></li>
-          <?php } else { ?>
-		<li>Filter :  All / <a href="<?php echo $query.'filter=unread'; ?>" title="Filter: show unread items">Unread</a></li>
-          <?php } ?>
-			
-<!--
-			<li>Items per page :  <a class="" href="?byPage=1"> 1</a> / <a class="" href="?byPage=10">10</a> /  <a class="" href="?byPage=50">50</a></li>
--->
-			
-			 <li><form class="form-inline" action="<?php echo $kfurl; ?>" method="GET">
-					<div class="input-prepend input-append paging-by-page">
-					  Items per page : <a class="btn btn3 btn-info" href="<?php echo $query.'byPage=1'; ?>">1</a> /
-					  <a class="btn btn3 btn-info" href="<?php echo $query.'byPage=10'; ?>">10</a> /
-					  <a class="btn btn3 btn-info" href="<?php echo $query.'byPage=50'; ?>">50</a> 
-					  <div class="btn-break"></div>
-					  <input class="btn2 input-by-page input-mini" type="text" name="byPage">
-						<input type="hidden" name="currentHash" value="<?php echo $currentHash; ?>">
-						  <button type="submit" class="btn btn2">items per page</button>
-					</div>
-				  </form>			
-			</li>			
-			
-
-			
-			<?php if ($view === 'expanded') { ?>
-           <li>View as : Expanded / <a href="<?php echo $query.'view=list'; ?>" title="Switch to list view (one line per item)">List</a></li>
-           <?php } else { ?>
-          <li>View as : List / <a href="<?php echo $query.'view=expanded'; ?>" title="Switch to expanded view">Expanded</a></li>
-          <?php } ?>
-		
-			<li>Mark <?php echo $currentHashType; ?> <a href="<?php echo $query.'read='.$currentHash; ?>" class="admin" title="Mark <?php echo $currentHashType; ?> as read">as read</a> / <a href="<?php echo $query.'unread='.$currentHash; ?>" class="admin" title="Mark <?php echo $currentHashType; ?> as unread">as unread</a></li>
-			
-			<li><a href="<?php echo $query.'update='.$currentHash; ?>" class="admin" title="Update <?php echo $currentHashType; ?> manually">Update <?php echo $currentHashType; ?></a></li>
-			
-			<li><a href="<?php echo $query.'edit='.$currentHash; ?>" class="admin" title="Edit <?php echo $currentHashType; ?>">Edit <?php echo $currentHashType; ?></a></li>
-		
-		</ul>
-	
-	</div>
-<?php
-    }
 
     public static function itemTpl()
     {
@@ -3195,7 +3093,7 @@ echo($buffer);
 <header>
 	<ul class="bar">
 		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  Title="Jump to item menu">Menu</a></li>
+		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </header>
 
@@ -3258,6 +3156,8 @@ echo($buffer);
 		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
 		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
 		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
+		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
 	</ul>
 </div>
 
@@ -3265,8 +3165,8 @@ echo($buffer);
 <footer>
 	<ul class="bar fixdown">
 		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#haut">Top ^</a></li>
-		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  Title="Jump to item menu">Menu</a></li>
+		<li><a class="txtcenter" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </footer>	
 
@@ -3314,11 +3214,7 @@ echo($buffer);
 			<?php altFeedPage::listItemsTpl(); ?>
 		        
         <?php } ?>
-        
-    <a class="inbl small txtright mr1" href="?tpl=std">Switch to standard template</a>
-    <br>
-    <br>
-    </div>
+     </div>
     
    
 <!--
@@ -5017,6 +4913,20 @@ dd {
             </a>
           </li>
           <?php } ?>
+          <li>
+              <a href="?tpl=alt">
+              <!--span class="menu-ico ico-login">
+                <span class="ico">
+                  <span class="ico-b-disc"></span>
+                  <span class="ico-onoff-circle"></span>
+                  <span class="ico-onoff-line"></span>
+                </span>
+              </span-->
+              <span class="menu-text">
+                Switch to alternative template
+              </span>
+            </a>
+          </li>
           <?php
              break;
              case 'config':
@@ -6286,8 +6196,7 @@ dd {
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
-          <a href="?tpl=alt">Switch to alternative template</a>
-        </div>
+       </div>
         <?php } ?>
       </div>
     </div>

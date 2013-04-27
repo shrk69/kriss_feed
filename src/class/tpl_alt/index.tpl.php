@@ -32,11 +32,7 @@
 			<?php altFeedPage::listItemsTpl(); ?>
 		        
         <?php } ?>
-        
-    <a class="inbl small txtright mr1" href="?tpl=std">Switch to standard template</a>
-    <br>
-    <br>
-    </div>
+     </div>
     
    
 <!--

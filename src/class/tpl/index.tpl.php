@@ -33,8 +33,7 @@
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
-          <a href="?tpl=alt">Switch to alternative template</a>
-        </div>
+       </div>
         <?php } ?>
       </div>
     </div>

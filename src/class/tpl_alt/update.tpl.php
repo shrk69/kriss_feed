@@ -8,7 +8,7 @@
          
 <header>          
          <ul class="bar">
-		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<li><a class="txtleft" href="<?php echo $query."".$currentHash; ?>"><</a></li>
 		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
 		</ul>
 </header>      
@@ -31,7 +31,8 @@
    
 <footer>          
          <ul class="bar fixdown">
-		<li><a class="txtleft" href="<?php  if (!empty($referer))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li>
+		<!--li><a class="txtleft" href="<!?php  if (!empty($referer) && !isset($_GET['force']))  { echo htmlspecialchars($referer); } else{echo '?';}; ?>"><</a></li-->
+		<li><a class="txtleft" href="<?php echo $query."".$currentHash; ?>"><</a></li>
 		<li><a class="txtright" href="<?php echo $query."update=".$currentHash."&force"; ?>">Force update</a></li>
 		</ul>
 </footer>        

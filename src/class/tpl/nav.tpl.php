@@ -338,6 +338,20 @@
             </a>
           </li>
           <?php } ?>
+          <li>
+              <a href="?tpl=alt">
+              <!--span class="menu-ico ico-login">
+                <span class="ico">
+                  <span class="ico-b-disc"></span>
+                  <span class="ico-onoff-circle"></span>
+                  <span class="ico-onoff-line"></span>
+                </span>
+              </span-->
+              <span class="menu-text">
+                Switch to alternative template
+              </span>
+            </a>
+          </li>
           <?php
              break;
              case 'config':
