@@ -283,7 +283,7 @@ padding: 0 10px 10px 10px;
 display:inline-block;
 width:100%;
 background-color: #fff;
-padding: 15px 5px 10px 10px;
+padding: 10px 5px 5px 15px;
 border-top: 1px solid #ddd;
 border-left: 1px solid #ddd;
 border-right: 1px solid #ddd;
@@ -309,6 +309,13 @@ display:block;
 font-weight: bold; 
 color:#333;
 }
+.il-title a:hover {
+display:block;
+font-weight: bold; 
+color:#000;
+}
+
+
 
 .il-item.read .il-title a {
 display:block;
@@ -322,7 +329,7 @@ color:#777;
 .il-url { color:#777;}
 
 .il-author > a { 
-color:darkgreen;
+color:#aaa;
 font-size: 1em;
 }
 
