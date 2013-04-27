@@ -690,11 +690,11 @@ class FeedConf
 <link type="text/css" rel="stylesheet" href="inc/style.css?version=<?php echo $version;?>" />
 <?php } else { ?>
 <style>
-/*@charset "UTF-8";
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);*/
+/*@charset "UTF-8";*/
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 body {
-	font-family :  "Helvetica Neue","Open Sans",/*"Ubuntu Light",  "Sawasdee", */Helvetica, Arial,sans-serif;
+	font-family :  "Open Sans",/*"Ubuntu Light", */ Helvetica, Arial,sans-serif;
 	color:#333;
 	font-size: 1.3em;
 	background-color:#eee;
