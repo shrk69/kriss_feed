@@ -85,7 +85,7 @@ ul.menu li {
 	/*background: #ddd ;*/
 	color: #777 ;
 	margin-left: 10px ;
-		/*width: 100%;*/
+	/*width: 100%;*/
 	/*margin: 10px 0px;
 	padding: 10px;*/
 	vertical-align: middle;
@@ -245,7 +245,7 @@ font-size:0.7em;
 padding: 0px 10px;
 /*padding-top:2px;*/
 /*margin: 5px 10px 0 0;*/
-/*vertical-align: middle;*/
+vertical-align: middle;
 text-align:center;
 background-color: yellowgreen;
 /*-moz-border-radius: 10px;
