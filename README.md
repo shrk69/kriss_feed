@@ -1,5 +1,3 @@
-kf_alt_tpl
-=======
 Work in progess...
 
 What: A mobile first template for KrISS Feed.
@@ -18,4 +16,4 @@ A mobile first (with progessive enhancement for tablet and desktop) template for
 
 Demo:
 -----
-Check a (durty early version) demo: http://92.243.14.153/demokf/
+Check a (durty early version) demo: http://92.243.14.153/demokf/?tpl=alt
