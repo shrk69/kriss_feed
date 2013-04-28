@@ -8,7 +8,7 @@
       <div class="row-fluid">
         <div id="edit-all" class="span6 offset3">
           <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
+          <!?php altFeedPage::navTpl(); ?>
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <legend>Add selected folders to selected feeds</legend>

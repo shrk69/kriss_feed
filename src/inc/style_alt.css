@@ -859,9 +859,14 @@ color:white;
 		/*background-color:#fff;*/
 	}
 
-	.i-main p, .i-main img {
+	.i-main p {
 	display: inline-block;
 	width:100%	
+	}
+	
+	.i-main img {
+	/*display: inline-block;
+	width:100%	*/
 	}
 
 	.i-header {
