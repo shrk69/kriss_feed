@@ -685,893 +685,17 @@ class FeedConf
 
 
 <!--
-<?php if (is_file('inc/style_alt.css')) { ?>
+<!?php if (is_file('inc/style_alt.css')) { ?>
 
-<link type="text/css" rel="stylesheet" href="inc/style.css?version=<?php echo $version;?>" />
-<?php } else { ?>
+<link type="text/css" rel="stylesheet" href="inc/style.css?version=<!?php echo $version;?>" />
+<!?php } else { ?>
 <style>
-/*@charset "UTF-8";*/
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-body {
-	font-family :  "Open Sans",/*"Ubuntu Light", */ Helvetica, Arial,sans-serif;
-	color:#333;
-	font-size: 1.3em;
-	background-color:#eee;
-	padding-bottom: 50px;
-	
-}
-
-a { 
-text-decoration: none;
-color: dodgerblue;
-}
-
-
-div#status { display: none; }
-
-
-/* NAVBAR -----------------------------------------*/
-
-ul.bar {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	padding:0px;
-	margin:0px;
-	font-size: 1em;
-}
-
-ul.bar > li {
-	display: table-cell;
-	float: none;
-	width: 100%;
-}
-
-ul.bar > li > a {
-text-transform: uppercase;
-/*line-height:1.5em;*/
-display: block;
-padding:15px 20px;
-background-color: #ddd;
-color: #777;
-	font-weight: bold;
-}
-
-ul.bar > li > a:hover {
-background-color: #888;
-color: #fff;
-font-weight: bold;
-}
-
-.fixdown {
-position: fixed !important;
-left: 0px !important;
-right: 0px !important;
-bottom: 0px !important;
-z-index: 999 !important;
-border-top: 1px solid #efefef;
-}
-
-ul.fixdown > li > a {
-/*padding:15px 20px;*/
-}
-
-/* end of BAR */
-
-
-/* menu ----------------------------------------*/
-
-ul.menu {
-	display: table;
-/*	table-layout: fixed;*/
-	width: 100%;
-	list-style: none;
-	margin: 0;
-	padding:10px;
-}
-
-ul.menu li {
-	display: table-cell;
-	float: none;
-	/*background: #ddd ;*/
-	color: #777 ;
-	margin-left: 10px ;
-		/*width: 100%;*/
-	/*margin: 10px 0px;
-	padding: 10px;*/
-	vertical-align: middle;
-}
-
-ul.menu li.btn {
-	background: #ddd ;
-	/*border-left:10px solid #eee;*/
-	/*text-align:center;*/
-}
-
-ul.menu li span {
-	padding: 5px 10px
-}
-
-ul.menu li a {
-	display: block ;
-	color: #777 ;
-	line-height: 2em ;
-	padding: 5px 10px;
-	text-transform: uppercase;
-}
-
-ul.menu li a.primary {
-	color: #fff ;
-	background: deepskyblue; 
-}
-
-ul.menu li.nobg, ul.menu li.nobg > a {
-	background: #efefef; 
- }
-
-ul.menu li.select, ul.menu li.select > a {
-	background: lightyellow; 
- }
-
-ul.menu li a:hover {
- color: #fff;
- background: #888;
-}
-
-ul.menu li.btn-primary, ul.menu li.btn-primary a {
-	color: #fff ;
-	background-color: #aaa;
-	font-weight: bold;
-}
-ul.menu li.btn-primary:hover, ul.menu li.btn-primary a:hover {
-	color: #fff ;
-	background-color: #888;
-}
-
-
-
-/* menu */
-
-
-/* menucom */
-
-ul.menucom {
-	list-style: none;
-	margin: 20px 0 20px 0;
-	padding:10px;
-	font-size: 1.3em;
-	border-top: 1px solid #ddd;
-}
-
-ul.menucom li {
-	width:100%;
-	text-align: right;
-}
-
-ul.menucom li a {
-	display: block ;
-	color: #777 ;
-
-	color: #777 ;
-/*	line-height: 1.5em ;*/
-	padding: 3px 10px;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-
-ul.menucom li a:hover {
-	color:dodgerblue;
-}
-
-
-/*ul.menucom li .about {
-	display: block ;
-	color: #888 ;
-	padding: 0px 10px;
-}
-*/
-
-ul.menucom li.about a {
-	display: inline;
-	text-transform: none;
-	color: dodgerblue ;
-	padding: 0px;
-	font-weight: normal;
-}
-
-
-/* ITEM ---------------------------------------------------------------------- */
-
-.i-header {
-	padding: 10px 10px 5px 10px ;
-}
-
-.i-title {
-	font-size: 1.5em;
-	line-height: 1.2em;
- }
-.i-title > a, .i-author > a,  .i-date{
-	color:#777;
- }
-
-.i-favicon { }
-.i-author { 
-
-}
-.i-date {
-
-}
-
-.i-main {
-background-color: #fff;
-padding: 10px;
-margin-bottom:10px;
-/*clear:both;*/
- }
- 
- /* END of ITEM */
- 
- 
-/* ITEMLIST ---------------------------------------------------------------- */
-
-.il-header {
-padding: 20px 10px 5px 10px;
-}
-
-.il-feed {
-line-height: 1.1em;
-color: #aaa;
-}
-.il-feed > a {
-color: #aaa;
-}
-
-
-
-.il-unread { 
-display:inline-block;
-font-size:0.7em;
-/*line-height:1.5em;*/
-/*height: 1.5em;*/
-padding: 0px 10px;
-/*padding-top:2px;*/
-/*margin: 5px 10px 0 0;*/
-/*vertical-align: middle;*/
-text-align:center;
-background-color: yellowgreen;
-/*-moz-border-radius: 10px;
-border-radius: 10px;*/
-color:white;
-/*line-height: 1.6em;*/
-/*font-weight: bold;*/
-margin-left: 1px;
-margin-bottom:3px;
-}
-
-.il-unread.no-unread {
-background-color: lightgrey;
-}
-
-
-.il-new {}
-
-
-.il-message {
-font-size: 1.5em;
-margin:10px;
-padding: 20px;
-background-color: #fff;
-}
-
-.il-main  {
-/*margin-bottom:10px;
-border-top: 1px solid #ddd;
-border-bottom: 1px solid #ddd;*/
-padding: 0 10px 10px 10px;
-}
-
-.il-item {
-display:inline-block;
-width:100%;
-background-color: #fff;
-padding: 10px 5px 5px 15px;
-border-top: 1px solid #ddd;
-border-left: 1px solid #ddd;
-border-right: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
-margin-bottom: 10px;
-}
-.il-item.read {
-background-color: #f4f4f4; /*ghostwhite*/
-/*border-bottom: 1px solid #ddd;*/
-}
-
-.il-item.current {
-background-color: lightyellow !important;
-}
-
-.il-title { 
-	font-size: 1.2em;
-	line-height: 1.1em;
-}
-
-.il-title a {
-display:block;
-font-weight: bold; 
-color:#333;
-}
-.il-title a:hover {
-display:block;
-font-weight: bold; 
-color:#000;
-}
-
-
-
-.il-item.read .il-title a {
-display:block;
-font-weight: normal; 
-color:#777;
-}
-
-.il-favicon { }
-.il-author {}
-.il-date { }
-.il-url { color:#777;}
-
-.il-author > a { 
-color:#aaa;
-font-size: 1em;
-}
-
-/* END of ITEMLIST */
-
-
-
-
-/* FEEDLIST -------------------------------------------------------*/
-
-
-/* jumper */
-
-ul.j {
-margin:0;
-padding:0;
-list-style: none;
-background-color: #eee;
-}
-
-ul.j > li {
-color: #777;
-width:100%;
-padding: 5px 0px;
-margin:0;
-border-bottom:1px solid #ddd;
-clear:both
-}
-
-ul.j > li.current {
-background-color: lightyellow;
-}
-
-span.j-jmp, a.j-t, span.j-u {
-display:inline-block;
-/*float:none;*/
-}
-
-a.j-t {
-/*max-width:70%;*/
-font-size: 1em;
-text-transform: uppercase;
-/*font-weight: bold;*/
-padding-left: 10px;
-color: #777;
-vertical-align: middle;
-/*white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;*/
-}
-
-
-span.j-u {
-float:right;
-font-size:1em;
-padding: 0 10px;
-margin: 5px 15px 0 0;
-vertical-align: middle;
-/*text-align:center;*/
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-/*line-height: 1.6em;*/
-font-weight: bold;
-}
-
-span.j-u.no-unread {
-background-color: lightgrey;
-/*-moz-border-radius: 10px;
-border-radius: 10px;*/
-}
-
-span.j-jmp {
-/*width:36px;*/
-vertical-align: middle;
-
-}
-span.j-jmp a {
-text-align:center;
-padding: 5px 20px;
-display:block;
-color:#777;
-/*font-weight: bold;*/
-}
-
-/* end of jumper */
-
-
-/* loop feeds */
-
-ul.f {
-margin:0;
-padding:0;
-list-style: none;
-}
-
-ul.f > li {
-/*display: block;*/
-/*table-layout:fixed;*/
-display: inline-block; 
-width:100%;
-padding: 5px 10px;
-margin:0;
-border-bottom:1px solid #ddd;
-background-color: white;
-vertical-align: middle;
-clear:both;
-}
-
-ul.f > li.current {
-background-color: lightyellow;
-}
-
-span.f-f, a.f-t, span.f-u {
-display:inline-block;
-/*float:none;*/
-}
-
-a.f-t {
-max-width:70%;
-padding: 5px 0 5px 10px;
-color: #777;
-vertical-align: middle;
-white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
-}
-
-span.f-u {
-font-size:0.9em;
-padding: 0 10px;
-vertical-align: middle;
-/*text-align:center;*/
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-/*border: 1px solid limegreen;*/
-color:#fff;
-line-height: 1.6em;
-font-weight: bold;
-margin-left: 10px;
-}
-
-span.f-f {
-/*width:36px;*/
-padding-left: 10px;
-vertical-align: middle;
-text-align:left;
-}
-
-/* Loop folder */
-
-
-h2.fd {
-color: #777;
-font-size: 100%;
-line-height: 1.5em;
-text-transform: uppercase;
-font-weight: bold;
-width:100%;
-padding: 5px 0px;
-margin:0;
-border-bottom:1px solid #eee;
-background-color: #eee;
-}
-
-h2.fd.current {
-background-color: lightyellow;
-}
-
-span.fd-top, a.fd-t, span.fd-u {
-display:inline-block;
-color: #777;/*float:none;*/
-}
-
-a.fd-t {
-max-width:70%;
-padding-left: 10px;
-color: #777;
-vertical-align: middle;
-white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
-}
-
-span.fd-u {
-float:right;
-font-size:1em;
-padding: 0 10px;
-margin: 5px 10px 0 0;
-vertical-align: middle;
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-/*line-height: 1.6em;*/
-/*font-weight: bold;
-margin-left: 10px;*/
-}
-
-span.fd-u.no-unread {
-background-color: lightgrey;
-}
-
-span.fd-top {
-vertical-align: middle;
-}
-span.fd-top a {
-text-align:center;
-padding: 5px 20px;
-display:block;
-color:#777;
-}
-/* end of loop folder */
-
-
-
-.fl-main {}
-
-ul.unstyled {
-margin:0;
-padding:0;
-list-style: none;
-}
-
-li.folder, li.feed {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 5px;
-margin:0;
-border-bottom:1px solid #ddd;
-}
-
-li.feed {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 5px;
-margin:0;
-border-bottom:1px solid #ddd;
-background-color: white;
-}
-li.feed.current {
-background-color: lightyellow;
-}
-
-li.feed .favicon {
-
-}
-
-li.feed .title {
-
-}
-li.feed .f-unread
-
-li.feed .f-unread.no-unread
-
-.f-starred
-
-
-li.folder.current, li.feed.current {
-background-color: lightyellow;
-}
-
-.nbunread {
-
-}
-
-.nbunread.no-unread {
-
-}
-
-
-
-
-ul.folder {
-margin:0;
-padding:0;
-list-style: none;
-}
-
-ul.folder > li {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 0;
-margin:0;
-}
-
-ul.folder > li > a.title {
-display:table-cell;
-width:70%;
-}
-ul.folder > li > a.nbunread {
-display:table-cell;
-text-align:right;
-margin-right: 10px;
-padding: 3px 5px;
-color:#fff;
-background: yellowgreen;
-}
-
-
-
-ul.feed {
-margin:0;
-padding:0;
-list-style: none;
-}
-
-
-.fl-feed {
-display: table;
-table-layout:fixed;
-width:100%;
-background:#fff;
-padding: 0;
-margin:0;
-}
-.fl-title { 
-display:table-cell;
-width:70%;
-}
-.fl-favicon { 
-display:table-cell;
-width:16px;
-}
-.fl-favicon > img { 
-height:16px;
-width:16px;
-}
-
-
-
-.fl-nbunread {
-display:table-cell;
-}
-.fl-btn-edit { }
-.fl-btn-top { }
-
-/* END of FEEDLIST */
-
-/* CONFIG */
-
-/*#config fieldset {
-background:#fff;
-margin:0;
-}
-#config fieldset legend {
-display:block;
-width:100%;
-padding:  20px 10px 5px 10px;
-font-size:1.5em;
-background:#eee;
-color:#777
-}*/
-
-/* */
-fieldset {
-background:#fff;
-margin:0;
-padding:0 0 10px 0;
-}
-fieldset legend {
-display:block;
-width:100%;
-padding:  20px 10px 5px 10px;
-font-size:1.5em;
-background:#eee;
-color:#777
-}
-fieldset > div {
-padding:3px 10px;
-}
-
-
-/* i-menu */
-
-ul#i-menu {
-	width: 100%;
-	list-style: none;
-	margin: 0;
-	margin-top: 10px;
-	padding:10px;
-}
-
-ul#i-menu li {
-	background: #ddd ;
-	color: #777 ;
-	margin-bottom: 10px ;
-	/*display: table-row;
-	width: 100%;
-	margin: 10px 0px;
-	padding: 10px;*/
-}
-
-ul#i-menu li > a {
-display: block ;
- color: #777 ;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-  text-transform: uppercase;
-}
-
-ul#i-menu li > a:hover{
-
- color: #777 ;
- background: #ccc;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-/* il-menu */
-
-ul#il-menu {
-	display: table;
-	/*table-layout: fixed;*/
-	width: 100%;
-	list-style: none;
-	margin: 0;
-	margin-top: 10px;
-	padding:10px;
-}
-
-ul#il-menu li {
-	display: table-cell;
-	float: none;
-	/*background: #ddd ;*/
-	color: #777 ;
-	margin-left: 10px ;
-	/*display: table-row;
-	width: 100%;
-	margin: 10px 0px;
-	padding: 10px;*/
-}
-
-ul#il-menu li > a {
-display: block ;
- color: #777 ;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-ul#il-menu li > a#next {
-	background: #ddd;
- }
-
-ul#il-menu li > a:hover{
- color: #777 ;
- background: #ccc;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-
-
-/* feedlist */
-
-a.nbitem {
-background-color: limegreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-line-height: 1.6em;
-font-weight: bold;
-margin-top: 0.5em;
-}
-
-
-.no-unread {
-background-color: lightgrey;
-color:white;
-}
-
-/*a.feed {
-	max-width:13em;
-	text-decoration: none;
-	color: #333;
-	margin-left: 5px;
-	white-space:nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}*/
-
-
-		font-size:1.3em;
-		padding: 20px;
-		column-width: 30em;
-		column-gap: 20px;
-		-moz-column-width: 30em;
-		-moz-column-gap: 20px;
-		-o-column-width: 30em;
-		-o-column-gap: 20px;
-		-webkit-column-width: 30em;
-		-webkit-column-gap: 20px;
-		color:#777;
-	}
-
-	div.fl-main,  div.il-main, div#il-footer {
-		/*margin:0px 10px;*/
-		column-width: 20em;
-		column-gap: 10px;
-		-moz-column-width: 20em;
-		-moz-column-gap: 10px;
-		-o-column-width: 20em;
-		-o-column-gap: 10px;
-		-webkit-column-width: 20em;
-		-webkit-column-gap: 10px;
-		/*background-color:#fff;*/
-	}
-
-	.i-main p, .i-main img {
-	display: inline-block;
-	width:100%	
-	}
-
-	.i-header {
-	padding:20px 10px 10px 20px;
-	font-size:1.3em;
-	}
-
-	.il-title { 
-	font-size: 12.8px /*1.2em*/;
-	line-height: 1.2em;
-	color:#666;
-}
-
-}
-
-a:hover { 
-color: dodgerblue;
-}
-
-/*
-@media (max-width: 640px) {
-	div#feedlist-main ul li {
-		white-space:nowrap;
-		text-overflow: ellipsis;
-		overflow: hidden;
-	}
-}
-*/
-
+<!?php include("inc/style_alt.css"); ?>
 </style>
-<?php } ?>
-<?php if (is_file('inc/user_alt.css')) { ?>
-<link type="text/css" rel="stylesheet" href="inc/user.css?version=<?php echo $version;?>" />
-<?php } ?>
+<!?php } ?>
+<!?php if (is_file('inc/user_alt.css')) { ?>
+<link type="text/css" rel="stylesheet" href="inc/user.css?version=<!?php echo $version;?>" />
+<!?php } ?>
 -->
 
 
@@ -2194,11 +1318,12 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
 <html>
   <head><?php altFeedPage::includesTpl(); ?></head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span6 offset3">
           <div id="config">
-            <?php altFeedPage::navTpl(); ?>
+            
             <div id="section">
               <h2>Keyboard shortcut</h2>
               <fieldset>
@@ -2301,6 +1426,9 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
         </div>
       </div>
     </div>
+  <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>
 <?php
@@ -2382,11 +1510,11 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div id="edit-all" class="span6 offset3">
           <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <legend>Add selected folders to selected feeds</legend>
@@ -2447,6 +1575,9 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
           </form>
         </div>
       </div>
+      <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>
 <?php
@@ -2462,10 +1593,11 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div id="edit-folder" class="span4 offset4">
-          <?php altFeedPage::navTpl(); ?>
+          
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <div class="control-group">
@@ -2490,6 +1622,9 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
         </div>
       </div>
     </div>
+  <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>
 <?php
@@ -2505,11 +1640,11 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div id="edit-feed" class="span6 offset3">
           <?php altFeedPage::statusTpl(); ?>
-          <?php altFeedPage::navTpl(); ?>
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <legend>Feed main information</legend>
@@ -2592,6 +1727,9 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
         </div>
       </div>
     </div>
+  <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>
 <?php
@@ -2980,7 +2118,7 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
 ?>
 				
 	<!-- BEGIN of IL-ITEM -->
-	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?>">
+	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?>">
 
 		<!-- TITLE -->
 		<h2  class="il-title">
@@ -2997,8 +2135,22 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
 		<span class="il-date small"><?php echo $item['time']['list']; ?></span>
 		
 		<!-- URL -->
-		<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">URL</a>
-	
+		<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">[url]</a>
+		
+		<?php if (isset($item['starred']) && $item['starred']===1) { ?>
+        <a class="il-url small" href="<?php echo $query.'unstar='.$itemHash; ?>">[unstar]</a>
+        <?php } else { ?>
+        <a class="il-url small" href="<?php echo $query.'star='.$itemHash; ?>">[star]</a>
+        <?php }?>
+        
+         <?php if (!isset($_GET['stars'])) { ?>
+        <?php if ($item['read'] == 1) { ?>
+        <a class="il-url small" href="<?php echo $query.'unread='.$itemHash; ?>">[unread]</a>
+        <?php } else { ?>
+        <a class="il-url small" href="<?php echo $query.'read='.$itemHash; ?>">[read]</a>
+        <?php } ?>
+        <?php } ?>
+			
 	</div>
 	<!-- END of IL-ITEM -->
 		
@@ -3092,7 +2244,7 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
 
 <header>
 	<ul class="bar">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash.'#item-'.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
 		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </header>
@@ -3173,6 +2325,52 @@ soluce for bug android http://code.google.com/p/android/issues/detail?id=15437
 	
 	
 	
+<?php
+    } 
+    
+    public static function mmenuTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<div>
+	<ul class="menucom">
+		<li><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
+		<?php if (Session::isLogged()) { ?><li><a href="?logout" class="admin" title="Logout">Logout</a></li>
+		<?php } else { ?><li><a href="?login">Login</a></li><?php } ?>
+		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
+		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
+		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
+		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
+		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
+	</ul>
+</div>
+<?php
+    } 
+    
+    public static function nav_topTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<header>
+	<ul class="bar">
+		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>">&lt;</a></li>
+		<li ><a class="txtright pr1" href="#menu"  onClick="scrollid('menu');return false;">Menu</a></li>
+	</ul>
+</header>
+<?php
+    } 
+       
+    public static function nav_bottomTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<footer>
+	<ul class="bar fixdown">
+		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>">&lt;</a></li>
+		<li><a class="txtcenter" href="#top"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li ><a class="txtright pr1" href="#menu"  onClick="scrollid('menu');return false;">Menu</a></li>
+	</ul>
+</footer>	
 <?php
     } 
     

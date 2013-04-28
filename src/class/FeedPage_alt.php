@@ -212,6 +212,42 @@
     } 
     
     /**
+     * mmenuTpl : Display menu config
+     * 
+     */
+    public static function mmenuTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<?php include("tpl_alt/mmenu.tpl.php"); ?>
+<?php
+    } 
+    
+   /**
+     * nav_topTpl : Display top nav bar
+     * 
+     */
+    public static function nav_topTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<?php include("tpl_alt/nav_top.tpl.php"); ?>
+<?php
+    } 
+       
+   /**
+     * nav_bottompl : Display bottom nav bar
+     * 
+     */
+    public static function nav_bottomTpl()
+    {
+        extract(altFeedPage::$var);
+?>
+<?php include("tpl_alt/nav_bottom.tpl.php"); ?>
+<?php
+    } 
+    
+    /**
      * indexTpl : index page
      * 
      */

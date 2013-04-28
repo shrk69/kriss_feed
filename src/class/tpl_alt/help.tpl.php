@@ -2,11 +2,12 @@
 <html>
   <head><?php altFeedPage::includesTpl(); ?></head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span6 offset3">
           <div id="config">
-            <?php altFeedPage::navTpl(); ?>
+            
             <div id="section">
               <h2>Keyboard shortcut</h2>
               <fieldset>
@@ -109,5 +110,8 @@
         </div>
       </div>
     </div>
+  <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>

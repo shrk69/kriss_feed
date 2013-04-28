@@ -4,10 +4,11 @@
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div id="edit-folder" class="span4 offset4">
-          <?php altFeedPage::navTpl(); ?>
+          
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <div class="control-group">
@@ -32,5 +33,8 @@
         </div>
       </div>
     </div>
+  <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>

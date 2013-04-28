@@ -40,7 +40,7 @@
 ?>
 				
 	<!-- BEGIN of IL-ITEM -->
-	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?>">
+	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?>">
 
 		<!-- TITLE -->
 		<h2  class="il-title">
@@ -57,8 +57,22 @@
 		<span class="il-date small"><?php echo $item['time']['list']; ?></span>
 		
 		<!-- URL -->
-		<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">URL</a>
-	
+		<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">[url]</a>
+		
+		<?php if (isset($item['starred']) && $item['starred']===1) { ?>
+        <a class="il-url small" href="<?php echo $query.'unstar='.$itemHash; ?>">[unstar]</a>
+        <?php } else { ?>
+        <a class="il-url small" href="<?php echo $query.'star='.$itemHash; ?>">[star]</a>
+        <?php }?>
+        
+         <?php if (!isset($_GET['stars'])) { ?>
+        <?php if ($item['read'] == 1) { ?>
+        <a class="il-url small" href="<?php echo $query.'unread='.$itemHash; ?>">[unread]</a>
+        <?php } else { ?>
+        <a class="il-url small" href="<?php echo $query.'read='.$itemHash; ?>">[read]</a>
+        <?php } ?>
+        <?php } ?>
+			
 	</div>
 	<!-- END of IL-ITEM -->
 		

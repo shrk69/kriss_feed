@@ -4,11 +4,11 @@
     <?php altFeedPage::includesTpl(); ?>
   </head>
   <body>
+	  <?php altFeedPage::nav_topTpl(); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div id="edit-all" class="span6 offset3">
           <?php altFeedPage::statusTpl(); ?>
-          <!?php altFeedPage::navTpl(); ?>
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <legend>Add selected folders to selected feeds</legend>
@@ -69,5 +69,8 @@
           </form>
         </div>
       </div>
+      <a id="menu"></a>
+      <?php altFeedPage::mmenuTpl(); ?>
+      <?php altFeedPage::nav_bottomTpl(); ?>
   </body>
 </html>

@@ -299,6 +299,10 @@ background-color: #f4f4f4; /*ghostwhite*/
 background-color: lightyellow !important;
 }
 
+.il-item.starred {
+border: 1px solid yellowgreen;
+}
+
 .il-title { 
 	font-size: 1.2em;
 	line-height: 1.1em;
@@ -325,8 +329,8 @@ color:#777;
 
 .il-favicon { }
 .il-author {}
-.il-date { }
-.il-url { color:#777;}
+.il-date {color:#aaa;}
+.il-url { color:#aaa;}
 
 .il-author > a { 
 color:#aaa;

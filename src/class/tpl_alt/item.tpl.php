@@ -2,7 +2,7 @@
 
 <header>
 	<ul class="bar">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash.'#item-'.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
 		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </header>

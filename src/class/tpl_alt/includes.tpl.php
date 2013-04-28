@@ -11,17 +11,17 @@
 
 
 <!--
-<?php if (is_file('inc/style_alt.css')) { ?>
+<!?php if (is_file('inc/style_alt.css')) { ?>
 
-<link type="text/css" rel="stylesheet" href="inc/style.css?version=<?php echo $version;?>" />
-<?php } else { ?>
+<link type="text/css" rel="stylesheet" href="inc/style.css?version=<!?php echo $version;?>" />
+<!?php } else { ?>
 <style>
-<?php include("inc/style_alt.css"); ?>
+<!?php include("inc/style_alt.css"); ?>
 </style>
-<?php } ?>
-<?php if (is_file('inc/user_alt.css')) { ?>
-<link type="text/css" rel="stylesheet" href="inc/user.css?version=<?php echo $version;?>" />
-<?php } ?>
+<!?php } ?>
+<!?php if (is_file('inc/user_alt.css')) { ?>
+<link type="text/css" rel="stylesheet" href="inc/user.css?version=<!?php echo $version;?>" />
+<!?php } ?>
 -->
 
 
