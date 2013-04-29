@@ -17,3 +17,8 @@ A mobile first (with progessive enhancement for tablet and desktop) template for
 Demo:
 -----
 Check a (dirty early version) demo: http://92.243.14.153/demokf/?tpl=alt
+
+Install:
+-------
+To install or update a running copy of KrISS Feed, just use this file:
+https://raw.github.com/shrk69/kriss_feed/master/src/index.php in place of the standard index.php file.
