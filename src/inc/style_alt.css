@@ -1,6 +1,3 @@
-/*@charset "UTF-8";*/
-/*@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);*/
-
 body {
 	font-family :  Helvetica,Arial,sans-serif;
 	color:#333;
@@ -330,11 +327,19 @@ color:#777;
 .il-favicon { }
 .il-author {}
 .il-date {color:#aaa;}
-.il-url { color:#aaa;}
+.il-url { }
 
 .il-author > a { 
 color:#aaa;
 font-size: 1em;
+}
+
+.il-btn, .il-url  {
+display: inline-block;
+font-size: 0.8em;
+background-color: #eee;
+color: #999;
+padding: 0px 5px 0px 5px;
 }
 
 /* END of ITEMLIST */

@@ -114,7 +114,7 @@ pre,
 samp,
 kbd {
 	white-space: pre-wrap;
-	font-family: consolas, 'DejaVu Sans Mono', courier, monospace;
+	font-family: consolas, "DejaVu Sans Mono", courier, monospace;
 	line-height: 1em;
 }
 code, kbd, mark {
