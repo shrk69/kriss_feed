@@ -2096,6 +2096,22 @@ color:white;
 }*/
 
 
+/*    *******************************  */
+
+
+
+@media (min-width: 768px) {
+
+	body {
+	font-size:1.2em;
+	}
+	
+	ul.bar > li > a {
+		padding:10px 20px;
+	}
+	
+	.i-main {
+		/*margin:0px 10px;*/
 		font-size:1.3em;
 		padding: 20px;
 		column-width: 30em;
