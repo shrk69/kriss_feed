@@ -536,7 +536,7 @@ if (isset($_GET['login'])) {
     $type = $kf->hashType($hash);
 
     if ($type === 'item') {
-        $query .= 'current='.$hash;
+        $query .= 'current='.$hash.'&open';
     }
     MyTool::redirect($query);
 } elseif (isset($_GET['stars']) && $kfc->isLogged()) {

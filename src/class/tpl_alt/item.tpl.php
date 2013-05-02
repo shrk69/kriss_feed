@@ -1,3 +1,22 @@
+
+
+<?php
+/*if ($kfc->isLogged()) {*/
+    // mark all as starred : item, feed, folder, all
+  /*  $kf->loadData();
+    $ks->loadData();*/
+
+   /* $starred = 1;
+    $itemitem = $kf->loadItem($currentItemHash, false);
+    $feed = $kf->getFeed(substr($currentItemHash, 0, 6));*/
+  /*  $needSave = $ks->markItem($currentItemHash, $starred, $feed, $itemitem);
+   
+    if ($needSave) {
+        $ks->writeData();
+    }*/
+    
+/*}*/
+?>
 <?php $item = $kf->getItem($currentItemHash);  ?>
 
 <header>
@@ -19,7 +38,7 @@
 	<!--	FAVICON	-->
 	<?php if ($addFavicon) { ?><img class="i-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
 	<!--	AUTHOR -->
-	<span class="i-author small"><a  href="<?php echo '?currentHash='.substr($itemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
+	<span class="i-author small"><a  href="<?php echo '?currentHash='.substr($currentItemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
 	<!--	DATE -->
 	<span class="i-date small"><?php echo $item['time']['list']; ?></span>
 

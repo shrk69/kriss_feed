@@ -1386,7 +1386,8 @@ ul.menu li.nobg, ul.menu li.nobg > a {
  }
 
 ul.menu li.select, ul.menu li.select > a {
-	background: lightyellow; 
+	/*background: lightyellow; */
+	border-bottom: 2px solid red;
  }
 
 ul.menu li a:hover {
@@ -1543,46 +1544,57 @@ background-color: #fff;
 /*margin-bottom:10px;
 border-top: 1px solid #ddd;
 border-bottom: 1px solid #ddd;*/
-padding: 0 10px 10px 10px;
+/*padding: 0 10px 10px 10px;*/
 }
 
 .il-item {
 display:inline-block;
 width:100%;
 background-color: #fff;
-padding: 10px 5px 5px 15px;
+/*padding: 10px 5px 5px 15px;*/
+padding: 15px 10px 5px 15px;
+
 border-top: 1px solid #ddd;
-border-left: 1px solid #ddd;
+/*border-left: 1px solid #ddd;
 border-right: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
-margin-bottom: 10px;
+border-bottom: 1px solid #ddd;*/
+/*margin-bottom: 10px;*/
 }
 .il-item.read {
 background-color: #f4f4f4; /*ghostwhite*/
-/*border-bottom: 1px solid #ddd;*/
-}
-
-.il-item.current {
-background-color: lightyellow !important;
+/*border: 1px solid #ddd;*/
 }
 
 .il-item.starred {
-border: 1px solid yellowgreen;
+background-color: honeydew /*aliceblue */ !important;
+/*border-right: 3px solid gold;*/
 }
+.il-item.starred a{
+color:  #777 !important;
+/*border: 1px solid #E9FFE1;*/
+}
+
+
+.il-item.current {
+/*background-color: lightyellow !important;*/
+border-bottom: 2px solid red !important;
+}
+
 
 .il-title { 
 	font-size: 1.2em;
 	line-height: 1.1em;
+	padding-bottom:10px;
 }
 
 .il-title a {
 display:block;
-font-weight: bold; 
+/*font-weight: bold; */
 color:#333;
 }
 .il-title a:hover {
 display:block;
-font-weight: bold; 
+/*font-weight: bold; */
 color:#000;
 }
 
@@ -1607,9 +1619,10 @@ font-size: 1em;
 .il-btn, .il-url  {
 display: inline-block;
 font-size: 0.8em;
-background-color: #eee;
-color: #999;
+background-color: #ddd;
+color: #777;
 padding: 0px 5px 0px 5px;
+display: none;
 }
 
 /* END of ITEMLIST */
@@ -1652,7 +1665,9 @@ a.j-t {
 font-size: 1em;
 text-transform: uppercase;
 /*font-weight: bold;*/
-padding-left: 10px;
+padding: 5px 0px 5px 10px;
+margin-top: 5px;
+margin-bottom:5px ;
 color: #777;
 vertical-align: middle;
 /*white-space:nowrap;
@@ -1731,6 +1746,8 @@ display:inline-block;
 a.f-t {
 max-width:70%;
 padding: 5px 0 5px 10px;
+margin-top: 5px;
+margin-bottom:5px ;
 color: #777;
 vertical-align: middle;
 white-space:nowrap;
@@ -1788,6 +1805,8 @@ color: #777;/*float:none;*/
 a.fd-t {
 max-width:70%;
 padding-left: 10px;
+margin-top: 5px;
+margin-bottom:5px ;
 color: #777;
 vertical-align: middle;
 white-space:nowrap;
@@ -2100,7 +2119,7 @@ color:white;
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
 	body {
 	font-size:1.2em;
@@ -2151,6 +2170,14 @@ color:white;
 	.i-header {
 	padding:20px 10px 10px 20px;
 	font-size:1.3em;
+	}
+
+	.zoom:hover {
+   -moz-transform: scale(2);
+   -webkit-transform: scale(2);
+   -o-transform: scale(2);
+   transform: scale(2);
+   -ms-transform: scale(2);
 	}
 
 	.il-title { 
@@ -3571,12 +3598,14 @@ color: dodgerblue;
 ?>
 				
 	<!-- BEGIN of IL-ITEM -->
-	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?>">
+	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?> zoom">
 
 		<!-- TITLE -->
 		<h2  class="il-title">
-			<a href="<?php echo $query.'current='.$itemHash.((!isset($_GET['open']) or $currentItemHash != $itemHash)?'&amp;open':''); ?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>"><?php echo $item['title']; ?></a>
+			<a href="<?php echo $query.'star='.$itemHash;?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>"><?php echo $item['title']; ?></a>
 		</h2>
+		<!--- .((!isset($_GET['open']) or $currentItemHash != $itemHash)?'&amp;open':'') -->
+		
 		
 		<!--	FAVICON	-->
 		<?php if ($addFavicon) { ?><img class="il-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
@@ -3693,6 +3722,25 @@ color: dodgerblue;
     {
         extract(altFeedPage::$var);
 ?>
+
+
+<?php
+/*if ($kfc->isLogged()) {*/
+    // mark all as starred : item, feed, folder, all
+  /*  $kf->loadData();
+    $ks->loadData();*/
+
+   /* $starred = 1;
+    $itemitem = $kf->loadItem($currentItemHash, false);
+    $feed = $kf->getFeed(substr($currentItemHash, 0, 6));*/
+  /*  $needSave = $ks->markItem($currentItemHash, $starred, $feed, $itemitem);
+   
+    if ($needSave) {
+        $ks->writeData();
+    }*/
+    
+/*}*/
+?>
 <?php $item = $kf->getItem($currentItemHash);  ?>
 
 <header>
@@ -3714,7 +3762,7 @@ color: dodgerblue;
 	<!--	FAVICON	-->
 	<?php if ($addFavicon) { ?><img class="i-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
 	<!--	AUTHOR -->
-	<span class="i-author small"><a  href="<?php echo '?currentHash='.substr($itemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
+	<span class="i-author small"><a  href="<?php echo '?currentHash='.substr($currentItemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
 	<!--	DATE -->
 	<span class="i-date small"><?php echo $item['time']['list']; ?></span>
 
@@ -11516,7 +11564,7 @@ if (isset($_GET['login'])) {
     $type = $kf->hashType($hash);
 
     if ($type === 'item') {
-        $query .= 'current='.$hash;
+        $query .= 'current='.$hash.'&open';
     }
     MyTool::redirect($query);
 } elseif (isset($_GET['stars']) && $kfc->isLogged()) {

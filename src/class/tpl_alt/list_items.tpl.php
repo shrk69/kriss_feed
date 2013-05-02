@@ -40,12 +40,14 @@
 ?>
 				
 	<!-- BEGIN of IL-ITEM -->
-	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?>">
+	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?> zoom">
 
 		<!-- TITLE -->
 		<h2  class="il-title">
-			<a href="<?php echo $query.'current='.$itemHash.((!isset($_GET['open']) or $currentItemHash != $itemHash)?'&amp;open':''); ?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>"><?php echo $item['title']; ?></a>
+			<a href="<?php echo $query.'star='.$itemHash;?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>"><?php echo $item['title']; ?></a>
 		</h2>
+		<!--- .((!isset($_GET['open']) or $currentItemHash != $itemHash)?'&amp;open':'') -->
+		
 		
 		<!--	FAVICON	-->
 		<?php if ($addFavicon) { ?><img class="il-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
