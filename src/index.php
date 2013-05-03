@@ -9661,11 +9661,19 @@ class Feed
 
     public function curl_exec_follow(&$ch, $redirects = 20, $curloptHeader = false) {
         if ((!ini_get('open_basedir') && !ini_get('safe_mode')) || $redirects < 1) {
-            curl_setopt($ch, CURLOPT_HEADER, $curloptHeader);
+            curl_setopt($ch, CURLOPT_HEADER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $redirects > 0);
             curl_setopt($ch, CURLOPT_MAXREDIRS, $redirects);
+            curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this, readHeader));
 
             $data = curl_exec($ch);
+
+            $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+            $header = substr($data, 0, $header_size);
+
+            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            $data = substr($data, strpos($data, "\r\n\r\n")+4);
         } else {
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
             curl_setopt($ch, CURLOPT_HEADER, true);
@@ -9700,6 +9708,9 @@ class Feed
 
         return array(
             'data' => $data,
+            'header' => $header,
+            'code' => $code,
+            'error' => curl_error(),
             'isnew' => $code != 304, // really new (2XX) and errors (4XX and 5XX) are considered new
             'etag' => $this->_headers['etag'],
             'last-modified' => $this->_headers['last-modified']
@@ -9716,7 +9727,7 @@ class Feed
         return strlen($str);
     }
 
-    public function loadXml($xmlUrl, &$cachedata)
+    public function loadXml($xmlUrl, &$etag, &$lastModified)
     {
         // reinitialize cache headers
         $this->_headers = array();
@@ -9734,17 +9745,12 @@ class Feed
             );
 
         // http headers
-        if (isset($cachedata)) {
-            if (empty($opts['http']['headers'])) {
-                $opts['http']['headers'] = array();
-            }
-
-            if (!empty($cachedata['last-modified'])) {
-                $opts['http']['headers'][] = 'If-Modified-Since: ' . $cachedata['last-modified'];
-            }
-            if (!empty($cachedata['etag'])) {
-                $opts['http']['headers'][] = 'If-None-Match: ' . $cachedata['etag'];
-            }
+        $opts['http']['headers'] = array();
+        if (!empty($lastModified)) {
+            $opts['http']['headers'][] = 'If-Modified-Since: ' . $lastModified;
+        }
+        if (!empty($etag)) {
+            $opts['http']['headers'][] = 'If-None-Match: ' . $etag;
         }
 
         $document = new DOMDocument();
@@ -9752,10 +9758,11 @@ class Feed
         if (in_array('curl', get_loaded_extensions())) {
             $output = $this->loadUrl($xmlUrl, $opts);
             if ($output['isnew']) {
-                $cachedata['etag'] = $output['etag'];
-                $cachedata['last-modified'] = $output['last-modified'];
+                $etag = $output['etag'];
+                $lastModified = $output['last-modified'];
             }
-            $document->loadXml($output['data']);
+
+            $document->loadXML($output['data']);
         } else {
             // try using libxml
             $context = stream_context_create($opts);
@@ -9774,7 +9781,14 @@ class Feed
     {
         $feedHash = MyTool::smallHash($xmlUrl);
         if (!isset($this->_data['feeds'][$feedHash])) {
-            $xml = $this->loadXml($xmlUrl, $this->_data['feeds'][$feedHash]['cachedata']);
+            $xml = $this->loadXml($xmlUrl, $this->_data['feeds'][$feedHash]['etag'], $this->_data['feeds'][$feedHash]['lastModified']);
+            if (empty($this->_data['feeds'][$feedHash]['etag'])) {
+                unset($this->_data['feeds'][$feedHash]['etag']);
+            }
+
+            if (empty($this->_data['feeds'][$feedHash]['lastModified'])) {
+                unset($this->_data['feeds'][$feedHash]['lastModified']);
+            }
 
             if (!$xml) {
                 return false;
@@ -9809,6 +9823,8 @@ class Feed
                 $channel['nbAll'] = count($items);
                 $channel['timeUpdate'] = 'auto';
                 $channel['lastUpdate'] = time();
+                $channel['etag'] = $this->_data['feeds'][$feedHash]['etag'];
+                $channel['lastModified'] = $this->_data['feeds'][$feedHash]['lastModified'];
 
                 $this->_data['feeds'][$feedHash] = $channel;
                 $this->_data['needSort'] = true;
@@ -9862,7 +9878,14 @@ class Feed
 
         unset($this->_data['feeds'][$feedHash]['error']);
         $xmlUrl = $this->_data['feeds'][$feedHash]['xmlUrl'];
-        $xml = $this->loadXml($xmlUrl, $this->_data['feeds'][$feedHash]['cachedata']);
+        $xml = $this->loadXml($xmlUrl, $this->_data['feeds'][$feedHash]['etag'], $this->_data['feeds'][$feedHash]['lastModified']);
+        if (empty($this->_data['feeds'][$feedHash]['etag'])) {
+            unset($this->_data['feeds'][$feedHash]['etag']);
+        }
+        
+        if (empty($this->_data['feeds'][$feedHash]['lastModified'])) {
+            unset($this->_data['feeds'][$feedHash]['lastModified']);
+        }
 
         if (!$xml) {
             if (file_exists($this->cacheDir.'/'.$feedHash.'.php')) {
