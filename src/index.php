@@ -1515,7 +1515,7 @@ padding: 0px 10px;
 /*margin: 5px 10px 0 0;*/
 vertical-align: middle;
 text-align:center;
-background-color: yellowgreen;
+background-color: #7FC046 /*yellowgreen*/;
 /*-moz-border-radius: 10px;
 border-radius: 10px;*/
 color:white;
@@ -1544,7 +1544,7 @@ background-color: #fff;
 /*margin-bottom:10px;
 border-top: 1px solid #ddd;
 border-bottom: 1px solid #ddd;*/
-/*padding: 0 10px 10px 10px;*/
+padding: 0 10px 10px 10px;
 }
 
 .il-item {
@@ -1554,11 +1554,11 @@ background-color: #fff;
 /*padding: 10px 5px 5px 15px;*/
 padding: 15px 10px 5px 15px;
 
-border-top: 1px solid #ddd;
+/*border-top: 1px solid #ddd;*/
 /*border-left: 1px solid #ddd;
 border-right: 1px solid #ddd;
 border-bottom: 1px solid #ddd;*/
-/*margin-bottom: 10px;*/
+margin-bottom: 10px;
 }
 .il-item.read {
 background-color: #f4f4f4; /*ghostwhite*/
@@ -1566,7 +1566,7 @@ background-color: #f4f4f4; /*ghostwhite*/
 }
 
 .il-item.starred {
-background-color: honeydew /*aliceblue */ !important;
+background-color: lightgoldenrodyellow /*linen*/ /*oldlace *//*seashell*/ /*honeydew*/ /*aliceblue */ !important;
 /*border-right: 3px solid gold;*/
 }
 .il-item.starred a{
@@ -1577,7 +1577,7 @@ color:  #777 !important;
 
 .il-item.current {
 /*background-color: lightyellow !important;*/
-border-bottom: 2px solid red !important;
+border-bottom: 2px solid #F08080 !important;
 }
 
 
@@ -1652,7 +1652,8 @@ clear:both
 }
 
 ul.j > li.current {
-background-color: lightyellow;
+/*background-color: lightyellow;*/
+border-bottom: 2px solid red;
 }
 
 span.j-jmp, a.j-t, span.j-u {
@@ -1735,7 +1736,8 @@ clear:both;
 }
 
 ul.f > li.current {
-background-color: lightyellow;
+/*background-color: lightyellow;*/
+border-bottom: 2px solid red;
 }
 
 span.f-f, a.f-t, span.f-u {
@@ -1794,7 +1796,8 @@ background-color: #eee;
 }
 
 h2.fd.current {
-background-color: lightyellow;
+/*background-color: lightyellow;*/
+border-bottom: 2px solid red;
 }
 
 span.fd-top, a.fd-t, span.fd-u {
@@ -1873,7 +1876,8 @@ border-bottom:1px solid #ddd;
 background-color: white;
 }
 li.feed.current {
-background-color: lightyellow;
+/*background-color: lightyellow;*/
+border-bottom: 2px solid red;
 }
 
 li.feed .favicon {
@@ -1891,7 +1895,8 @@ li.feed .f-unread.no-unread
 
 
 li.folder.current, li.feed.current {
-background-color: lightyellow;
+/*background-color: lightyellow;*/
+border-bottom: 2px solid red;
 }
 
 .nbunread {
@@ -2122,7 +2127,7 @@ color:white;
 @media (min-width: 769px) {
 
 	body {
-	font-size:1.2em;
+	font-size:1.4em;
 	}
 	
 	ul.bar > li > a {
@@ -2172,16 +2177,28 @@ color:white;
 	font-size:1.3em;
 	}
 
+	.zoom {
+/*	-webkit-transition: all .1s ease-out;
+   -moz-transition: all .1s ease-out;
+   -o-transition: all .1s ease-out;
+   transition: all .1s ease-out;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
+	}
 	.zoom:hover {
-   -moz-transform: scale(2);
-   -webkit-transform: scale(2);
-   -o-transform: scale(2);
-   transform: scale(2);
-   -ms-transform: scale(2);
+ /*  -moz-transform: scale(.8);
+   -webkit-transform: scale(1.2);
+   -o-transform: scale(1.2);
+   transform: scale(1.05);
+   -ms-transform: scale(1.2);
+   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
 	}
 
 	.il-title { 
-	font-size: 12.8px /*1.2em*/;
+	font-size: 1em /*12.8px*/ ;/*1.2em*/
 	line-height: 1.2em;
 	color:#666;
 }
@@ -9647,6 +9664,7 @@ class Feed
             curl_setopt($ch, CURLOPT_HEADER, $curloptHeader);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $redirects > 0);
             curl_setopt($ch, CURLOPT_MAXREDIRS, $redirects);
+
             $data = curl_exec($ch);
         } else {
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
@@ -9734,11 +9752,10 @@ class Feed
         if (in_array('curl', get_loaded_extensions())) {
             $output = $this->loadUrl($xmlUrl, $opts);
             if ($output['isnew']) {
-                $cachedata['xml'] = $output['data'];
                 $cachedata['etag'] = $output['etag'];
                 $cachedata['last-modified'] = $output['last-modified'];
             }
-            $document->loadXml($cachedata['xml']);
+            $document->loadXml($output['data']);
         } else {
             // try using libxml
             $context = stream_context_create($opts);
