@@ -8,6 +8,11 @@
 <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
 <!-- <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon"> -->
 
+
+<!--link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"-->
+
+
 <?php if (is_file('inc/style_alt.css')) { ?>
 	<style>
 	<?php
@@ -28,6 +33,7 @@
 	$cssFiles = array(
 	  "inc/knacss_reset.css",
 	  "inc/style_alt.css",
+	  "inc/user_alt.css",
 	);
 
 	/**
@@ -79,6 +85,9 @@
 	$buffer .= '
 	<?php include("inc/style_alt.css"); ?>
 	';
+	$buffer .= '
+	<?php include("inc/user_alt.css"); ?>
+	';
 
 	// Remove comments
 	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
@@ -94,9 +103,12 @@
 	</style>
 <?php } ?>
 
-<?php if (is_file('inc/user_alt.css')) { ?>
-	<link type="text/css" rel="stylesheet" href="inc/user_alt.css?version=<?php echo $version;?>" />
-<?php } ?>
+
+<!--
+<?php// if (is_file('inc/user_alt.css')) { ?>
+	<link type="text/css" rel="stylesheet" href="inc/user_alt.css?version=<?php //echo $version;?>" />
+<?php// } ?>
+-->
 
 <!-- soluce for bug android http://code.google.com/p/android/issues/detail?id=15437-->
 <script type="text/javascript">function scrollid(element){   var ele = document.getElementById(element);   window.scrollTo(ele.offsetLeft,ele.offsetTop); }</script>

@@ -17,8 +17,7 @@
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
-          <a href="?tpl=alt">Switch to alternative template</a>
-        </div>
+          </div>
         <div id="minor-container" class="span3 full-height minor-container">
           <?php FeedPage::listFeedsTpl(); ?>
         </div>

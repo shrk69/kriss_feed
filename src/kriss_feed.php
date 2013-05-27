@@ -506,13 +506,12 @@ if (isset($_GET['login'])) {
         }
     }
     MyTool::redirect($query);
-} elseif ((isset($_GET['star'])
-           || isset($_GET['unstar']))
-          && $kfc->isLogged()) {
+} elseif ((isset($_GET['star']) || isset($_GET['unstar'])))  { 
+	         
     // mark all as starred : item, feed, folder, all
     $kf->loadData();
     $ks->loadData();
-
+	 
     $starred = 1;
     if (isset($_GET['star'])) {
         $hash = $_GET['star'];
@@ -527,17 +526,29 @@ if (isset($_GET['login'])) {
         $starred = 0;
 
         $needSave = $ks->markItem($hash, $starred);
-    }
-    if ($needSave) {
-        $ks->writeData();
-    }
-
-    // type : 'feed', 'folder', 'all', 'item'
+    }	
+    
+    /*$hashr = $hash;
+	$read = 1;
+		$needSavef = $kf->mark($hash, $read);
+		if ($needSavef) {
+			$kf->writeData();
+		}   */
+		
+    if ($kfc->isLogged()) {
+		if ($needSave) {
+			$ks->writeData();
+		 }
+	
+	} /* end if isLogged*/
+	
+	 // type : 'feed', 'folder', 'all', 'item'
     $type = $kf->hashType($hash);
 
     if ($type === 'item') {
         $query .= 'current='.$hash.'&open';
     }
+   
     MyTool::redirect($query);
 } elseif (isset($_GET['stars']) && $kfc->isLogged()) {
     $ks->loadData();

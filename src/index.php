@@ -682,6 +682,11 @@ class FeedConf
 <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
 <!-- <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon"> -->
 
+
+<!--link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"-->
+
+
 <?php if (is_file('inc/style_alt.css')) { ?>
 	<style>
 	<?php
@@ -690,6 +695,7 @@ class FeedConf
 	$cssFiles = array(
 	  "inc/knacss_reset.css",
 	  "inc/style_alt.css",
+	  "inc/user_alt.css",
 	);
 
 	$buffer = "";
@@ -1269,24 +1275,48 @@ textarea {
 	';
 	$buffer .= '
 body {
-	font-family :  Helvetica,Arial,sans-serif;
-	color:#333;
+	font-family : /*Lato,"Ubuntu light","Open Sans",*/"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-size: 1.3em;
-	background-color:#eee;
+	color:#333;
+	background-color:#f6f6f6;
 	padding-bottom: 50px;
-	
 }
 
 a { 
 text-decoration: none;
-color: dodgerblue;
+color: #aaa /*#3C99CD*/ /*#0645AD*/;
+}
+a:hover {
+color:#B30000;
 }
 
+.full-circle {
+	position:absolute;
+	top:0px;
+	right:0px;
+	margin: 16px 16px 0px 0px;
+	height: 12px;
+	width: 12px;
+}
+
+.full-circle-vu {
+	background-color:#ddd;
+	color:#ddd;
+}
+.full-circle-new {
+	background-color: #333;
+}
+
+.full-circle:hover {
+	background-color: orange; 
+}
 
 div#status { display: none; }
 
 
+
 /* NAVBAR -----------------------------------------*/
+/* a remplacer par ul.navbar */
 
 ul.bar {
 	display: table;
@@ -1295,51 +1325,102 @@ ul.bar {
 	padding:0px;
 	margin:0px;
 	font-size: 1em;
+	border-bottom: 1px solid #ddd;
 }
-
 ul.bar > li {
 	display: table-cell;
 	float: none;
 	width: 100%;
 }
-
 ul.bar > li > a {
-text-transform: uppercase;
-/*line-height:1.5em;*/
-display: block;
-padding:15px 20px;
-background-color: #ddd;
-color: #777;
+	display: block;
+	padding:15px 0px;
+	background-color: #fff;
+	/*color: #aaa;*/
 	font-weight: bold;
+	text-transform: uppercase;
 }
-
+ul.bar li:first-child a{
+	padding-left: 20px;
+}
+ul.bar li:last-child a{
+	padding-right: 20px;
+}
 ul.bar > li > a:hover {
-background-color: #888;
-color: #fff;
-font-weight: bold;
+	background-color: #B30000;
+	color: #fff;
 }
-
 .fixdown {
-position: fixed !important;
-left: 0px !important;
-right: 0px !important;
-bottom: 0px !important;
-z-index: 999 !important;
-border-top: 1px solid #efefef;
+	position: fixed !important;
+	left: 0px !important;
+	right: 0px !important;
+	bottom: 0px !important;
+	z-index: 999 !important;
+	border-top: 1px solid #ddd;
 }
-
-ul.fixdown > li > a {
-/*padding:15px 20px;*/
-}
-
 /* end of BAR */
+
+/* NAVBAR -----------------------------------------*/
+
+ul.navbar {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	padding:0px;
+	margin:0px;
+	font-size: 1em;
+}
+
+ul.navbar li {
+	display: table-cell;
+	float: none;
+	width: 100%;
+}
+
+ul.navbar li a {
+	display: block;
+	padding:15px 0px;
+	background-color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align:center;
+}
+
+ul.navbar li:last-child a {
+	padding-right: 20px;
+	text-align:right;
+}
+
+ul.navbar li:first-child a {
+	padding-left: 20px;
+	text-align:left;
+}
+
+ul.navbar li a:hover {
+	background-color: #777 /*#3C99CD*/;
+	color:#fff;
+}
+
+.navbar-top {
+	border-bottom: 2px solid steelblue /*#FF6600*/;
+}
+
+.navbar-bottom {
+	position: fixed !important;
+	left: 0px !important;
+	right: 0px !important;
+	bottom: 0px !important;
+	z-index: 999 !important;
+	border-top: 2px solid steelblue /*#FF6600*/;
+}
+
+/* end of NAVBAR */
 
 
 /* menu ----------------------------------------*/
 
 ul.menu {
 	display: table;
-/*	table-layout: fixed;*/
 	width: 100%;
 	list-style: none;
 	margin: 0;
@@ -1349,19 +1430,13 @@ ul.menu {
 ul.menu li {
 	display: table-cell;
 	float: none;
-	/*background: #ddd ;*/
 	color: #777 ;
 	margin-left: 10px ;
-	/*width: 100%;*/
-	/*margin: 10px 0px;
-	padding: 10px;*/
 	vertical-align: middle;
 }
 
 ul.menu li.btn {
-	background: #ddd ;
-	/*border-left:10px solid #eee;*/
-	/*text-align:center;*/
+	background: #f6f6f6;
 }
 
 ul.menu li span {
@@ -1370,7 +1445,6 @@ ul.menu li span {
 
 ul.menu li a {
 	display: block ;
-	color: #777 ;
 	line-height: 2em ;
 	padding: 5px 10px;
 	text-transform: uppercase;
@@ -1383,16 +1457,14 @@ ul.menu li a.primary {
 
 ul.menu li.nobg, ul.menu li.nobg > a {
 	background: #efefef; 
- }
+}
 
 ul.menu li.select, ul.menu li.select > a {
-	/*background: lightyellow; */
 	border-bottom: 2px solid red;
- }
+}
 
 ul.menu li a:hover {
- color: #fff;
- background: #888;
+ background-color: #eee;
 }
 
 ul.menu li.btn-primary, ul.menu li.btn-primary a {
@@ -1401,16 +1473,14 @@ ul.menu li.btn-primary, ul.menu li.btn-primary a {
 	font-weight: bold;
 }
 ul.menu li.btn-primary:hover, ul.menu li.btn-primary a:hover {
-	color: #fff ;
 	background-color: #888;
 }
 
+/* END of MENU */
 
 
-/* menu */
-
-
-/* menucom */
+/* MENUCOM */
+/* a supprimer */
 
 ul.menucom {
 	list-style: none;
@@ -1428,25 +1498,10 @@ ul.menucom li {
 ul.menucom li a {
 	display: block ;
 	color: #777 ;
-
-	color: #777 ;
-/*	line-height: 1.5em ;*/
 	padding: 3px 10px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
-
-ul.menucom li a:hover {
-	color:dodgerblue;
-}
-
-
-/*ul.menucom li .about {
-	display: block ;
-	color: #888 ;
-	padding: 0px 10px;
-}
-*/
 
 ul.menucom li.about a {
 	display: inline;
@@ -1455,165 +1510,233 @@ ul.menucom li.about a {
 	padding: 0px;
 	font-weight: normal;
 }
+ /* END of MENUCOM */
 
 
 /* ITEM ---------------------------------------------------------------------- */
 
 .i-header {
-	padding: 10px 10px 5px 10px ;
+	margin: 0px 16px;
+	padding:10px 0px; 
+	max-width:45em;
 }
 
 .i-title {
-	font-size: 1.5em;
+	padding-top:10px;
+	font-size: 0.9em;
 	line-height: 1.2em;
+	text-transform: uppercase;
  }
-.i-title > a, .i-author > a,  .i-date{
-	color:#777;
+.i-title a {
+	color: #777;
  }
+.i-title a:hover {
+	color: #B30000;
+ }
+ 
+.i-main-header {
+	margin-left:8px;
+	display:inline-block;
+	font-size:1em;
+	max-width:45em;
+	border:8px solid #ddd;
+	border-bottom-width:0;
+	background-color:#ddd;
+}
+
 
 .i-favicon { }
-.i-author { 
-
+.i-author a { 
+	color:#333;
 }
 .i-date {
-
+	padding-left:16px;
+	padding-right:8px;
+	color:#333;
 }
 
 .i-main {
-background-color: #fff;
-padding: 10px;
-margin-bottom:10px;
-/*clear:both;*/
- }
+	font-size:1.1em;
+	background-color: #fff;
+	border-top:8px solid #ddd;
+	border-bottom:8px solid #ddd;
+	padding: 16px;
+	margin-bottom:10px;
+}
+
+.i-main a { 
+color: #3C99CD /*#0645AD*/;
+}
  
- /* END of ITEM */
+.i-main h1, .i-main h2, .i-main h3, .i-main h4, .i-main h5, .i-main h6 {
+ line-height: 1.2em;
+}
+
+.i-main img {
+	max-width:100%;
+	height:auto;
+}
+ 
+/* END of ITEM */
  
  
 /* ITEMLIST ---------------------------------------------------------------- */
 
 .il-header {
-padding: 20px 10px 5px 10px;
+	padding: 20px 8px 0px 8px;
 }
 
 .il-feed {
-line-height: 1.1em;
-color: #aaa;
-}
-.il-feed > a {
-color: #aaa;
-}
-
-
-
-.il-unread { 
-display:inline-block;
-font-size:0.7em;
-/*line-height:1.5em;*/
-/*height: 1.5em;*/
-padding: 0px 10px;
-/*padding-top:2px;*/
-/*margin: 5px 10px 0 0;*/
-vertical-align: middle;
-text-align:center;
-background-color: #7FC046 /*yellowgreen*/;
-/*-moz-border-radius: 10px;
-border-radius: 10px;*/
-color:white;
-/*line-height: 1.6em;*/
-/*font-weight: bold;*/
-margin-left: 1px;
-margin-bottom:3px;
+	line-height: 1em;
+	font-size:1em;
+	text-transform: uppercase;
+	margin-left:8px;
 }
 
-.il-unread.no-unread {
-background-color: lightgrey;
+.il-feed a {
+	color:#777;
+}
+
+.il-unread {
+	margin-top:16px;
+	padding-top:8px;
+	padding-right:16px;
+	display: inline-block;
+	background-color:  #ddd;
+}
+
+.il-unread small{
+	font-size: 0.7em;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+	
+.il-unread-nb {
+	display:inline-block;
+	padding:0px;
+	margin:0px;
+	font-weight: bold;
+}
+
+.il-unread.no-unread .il-unread-nb  {
+	color:#aaa;
+	padding-left:8px;
 }
 
 
-.il-new {}
-
+.il-unread-all-btn {
+	display:inline-block;
+	color: #aaa;
+	font-weight:normal;
+	margin:0px;
+	font-size: 1.2em;
+	padding: 0px 10px 0px 10px;
+}
+.il-unread-all-btn:hover {
+	background-color: #B30000 /*#3C99CD*/;
+	color:#fff;
+}
 
 .il-message {
-font-size: 1.5em;
-margin:10px;
-padding: 20px;
-background-color: #fff;
+	font-size: 1.5em;
+	margin: 0 20px 0 0;
+	padding: 16px;
+	background-color: #ddd;
 }
 
 .il-main  {
-/*margin-bottom:10px;
-border-top: 1px solid #ddd;
-border-bottom: 1px solid #ddd;*/
-padding: 0 10px 10px 10px;
+	padding: 0;
 }
+
+.il-items-wrapper {
+	padding:16px 8px 8px 8px;
+	background-color:#ddd;
+}	
 
 .il-item {
-display:inline-block;
-width:100%;
-background-color: #fff;
-/*padding: 10px 5px 5px 15px;*/
-padding: 15px 10px 5px 15px;
-
-/*border-top: 1px solid #ddd;*/
-/*border-left: 1px solid #ddd;
-border-right: 1px solid #ddd;
-border-bottom: 1px solid #ddd;*/
-margin-bottom: 10px;
+	display:block;
+	width:100%;
+	position:relative;
+	background-color: #fff;
+	padding: 16px 36px 8px 8px;
+	border: 2px solid #aaa;
+	border-top-width:0px;
+	border-right-width:1px;
+	border-left-width:0px;
+	margin:0px;
+	margin-bottom:8px;
 }
+
+.il-item:first-child {}
+
+.il-item:last-child {}
+
 .il-item.read {
-background-color: #f4f4f4; /*ghostwhite*/
-/*border: 1px solid #ddd;*/
+	background-color:#f6f6f6; 
 }
 
 .il-item.starred {
-background-color: lightgoldenrodyellow /*linen*/ /*oldlace *//*seashell*/ /*honeydew*/ /*aliceblue */ !important;
-/*border-right: 3px solid gold;*/
+	background-color:   #fff !important;
+	color:#333 !important;
 }
-.il-item.starred a{
-color:  #777 !important;
-/*border: 1px solid #E9FFE1;*/
+.il-item.starred .il-title a{
+	font-weight: normal !important;
 }
-
-
-.il-item.current {
-/*background-color: lightyellow !important;*/
-border-bottom: 2px solid #F08080 !important;
+.il-item.starred .il-title a:hover {
+	color:#B30000 !important;
 }
 
+.il-item.current {}
 
 .il-title { 
-	font-size: 1.2em;
-	line-height: 1.1em;
-	padding-bottom:10px;
+	display:inline-block;
+	font-size: 1.1em;
+	line-height: 1.2em;
+	padding-bottom:8px;
+	margin:0px;
 }
-
 .il-title a {
-display:block;
-/*font-weight: bold; */
-color:#333;
+	font-weight: bold; 
+	color:#333;
 }
 .il-title a:hover {
-display:block;
-/*font-weight: bold; */
-color:#000;
+	color:#B30000;
 }
 
-
-
 .il-item.read .il-title a {
-display:block;
-font-weight: normal; 
-color:#777;
+	font-weight: normal; 
+}
+
+.il-item.read.starred {
+	background-color:#f6f6f6 !important;
 }
 
 .il-favicon { }
-.il-author {}
-.il-date {color:#aaa;}
+
+.il-author { 	}
+.il-author > a { 
+	display:block;
+	color:#333;
+	font-size: 1.1em;
+}
+
+.il-date {
+	color:#777;
+}
 .il-url { }
 
-.il-author > a { 
-color:#aaa;
-font-size: 1em;
+a.il-btn-read {
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	font-size: 1.2em;
+	padding: 12px 12px 6px 12px;
+	margin-right:4px;
+	text-transform: uppercase;
+}
+a.il-btn-read:hover {
+	background: #B30000 /*#3C99CD*/;
+	color:#fff;
 }
 
 .il-btn, .il-url  {
@@ -1628,369 +1751,318 @@ display: none;
 /* END of ITEMLIST */
 
 
-
-
 /* FEEDLIST -------------------------------------------------------*/
-
 
 /* jumper */
 
 ul.j {
-margin:0;
-padding:0;
-list-style: none;
-background-color: #eee;
+	margin:0;
+	padding:16px 8px 16px 8px;
+	list-style: none;
+	font-size:1.2em;
 }
 
-ul.j > li {
-color: #777;
-width:100%;
-padding: 5px 0px;
-margin:0;
-border-bottom:1px solid #ddd;
-clear:both
+ul.j li {
+	width:100%;
+	padding: 8px 16px;
+	margin:0px;
+	font-size:0.9em;
+	position:relative;
+	border: 1px solid #ddd;
+	border-bottom-width:0px;
+	background-color: #fff;
+	clear:both;
 }
 
-ul.j > li.current {
-/*background-color: lightyellow;*/
-border-bottom: 2px solid red;
+ul.j li:last-child {
+	-moz-border-radius: 0px 0px 20px 20px;
+	border-radius: 0px 0px 20px 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
+ul.j li#all-subscriptions + li {
+	-moz-border-radius: 20px 20px 0px 0px;
+	border-radius: 20px 20px 0px 0px;
+}
+
+ul.j li#all-subscriptions {
+	margin-bottom:16px;
+	border: 1px solid #ddd;
+	-moz-border-radius: 0px;
+	border-radius: 20px;
+}
+
+li.j-folder {}
+li.j-folder.no-unread {}
+
+ul.j > li.current {}
 
 span.j-jmp, a.j-t, span.j-u {
-display:inline-block;
-/*float:none;*/
+	display:inline-block;
 }
 
 a.j-t {
-/*max-width:70%;*/
-font-size: 1em;
-text-transform: uppercase;
-/*font-weight: bold;*/
-padding: 5px 0px 5px 10px;
-margin-top: 5px;
-margin-bottom:5px ;
-color: #777;
-vertical-align: middle;
-/*white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;*/
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 0px 0px 0px 0px;
+	margin-top: 0px;
+	margin-bottom:0px ;
+	color: #333;
+	vertical-align: middle;
+}
+
+li.j-folder.no-unread a.j-t {
+	font-weight:normal;
+}
+
+.j-circle {
+	position:absolute;
+	top:0px;
+	left:4px;
+	margin: 8px 0px;
+	height: 8px;
+	width: 8px;
+	background-color:yellowgreen;
+	color:yellowgreen;
+	display:none;
 }
 
 
 span.j-u {
-float:right;
-font-size:1em;
-padding: 0 10px;
-margin: 5px 15px 0 0;
-vertical-align: middle;
-/*text-align:center;*/
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-/*line-height: 1.6em;*/
-font-weight: bold;
+	padding: 0px 5px;
+	margin: 0px 0px 0px 0px;
+	vertical-align: middle;
+	color: #333/*#3C99CD*/ ;
+	font-weight: bold;
 }
 
 span.j-u.no-unread {
-background-color: lightgrey;
-/*-moz-border-radius: 10px;
-border-radius: 10px;*/
+	color: #aaa ;
 }
 
 span.j-jmp {
-/*width:36px;*/
-vertical-align: middle;
-
+	vertical-align: middle;
+	float:right;
 }
+
 span.j-jmp a {
-text-align:center;
-padding: 5px 20px;
-display:block;
-color:#777;
-/*font-weight: bold;*/
+	text-align:center;
+	padding: 2px 15px;
+	display:block;
 }
-
+span.j-jmp a:hover {
+	background-color: #777;
+	color:#fff;
+}
 /* end of jumper */
 
 
 /* loop feeds */
 
 ul.f {
-margin:0;
-padding:0;
-list-style: none;
+	margin:0;
+	padding:0;
+	list-style: none;
 }
 
 ul.f > li {
-/*display: block;*/
-/*table-layout:fixed;*/
-display: inline-block; 
-width:100%;
-padding: 5px 10px;
-margin:0;
-border-bottom:1px solid #ddd;
-background-color: white;
-vertical-align: middle;
-clear:both;
+	display: inline-block; 
+	width:100%;
+	padding: 8px 16px;
+	margin:0;
+	border-bottom:1px solid #ddd;
+	background-color: white;
+	vertical-align: middle;
+	clear:both;
+	font-weight:normal;
 }
 
-ul.f > li.current {
-/*background-color: lightyellow;*/
-border-bottom: 2px solid red;
+ul.f li.has-unread {
+font-weight:bold;
 }
+
+ul.f li:last-child {
+border-bottom:0px solid #fff;
+}
+
+ul.f > li.current {}
 
 span.f-f, a.f-t, span.f-u {
-display:inline-block;
-/*float:none;*/
+	display:inline-block;
 }
 
 a.f-t {
-max-width:70%;
-padding: 5px 0 5px 10px;
-margin-top: 5px;
-margin-bottom:5px ;
-color: #777;
-vertical-align: middle;
-white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
+	font-size:1.2em;
+	padding: 3px 0 3px 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: #333;
+	vertical-align: middle;
 }
+
+
 
 span.f-u {
-font-size:0.9em;
-padding: 0 10px;
-vertical-align: middle;
-/*text-align:center;*/
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-/*border: 1px solid limegreen;*/
-color:#fff;
-line-height: 1.6em;
-font-weight: bold;
-margin-left: 10px;
+	font-size:1.2em;
+	padding: 0 5px;
+	vertical-align: middle;
+	text-align:center;
+	font-weight: bold;
 }
 
-span.f-f {
-/*width:36px;*/
-padding-left: 10px;
-vertical-align: middle;
-text-align:left;
+span.f-f img {
+	height:16px;
+	width:16px;
+	margin-right: 5px;
+	vertical-align: middle;
+	text-align:left;
 }
+
 
 /* Loop folder */
 
-
 h2.fd {
-color: #777;
-font-size: 100%;
-line-height: 1.5em;
-text-transform: uppercase;
-font-weight: bold;
-width:100%;
-padding: 5px 0px;
-margin:0;
-border-bottom:1px solid #eee;
-background-color: #eee;
+	font-size: 1em;
+	line-height: 1em;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 8px 16px;
+	margin:0px 0px 0px 0px;
+	background-color:#ddd;
+	vertical-align: middle;
 }
 
-h2.fd.current {
-/*background-color: lightyellow;*/
-border-bottom: 2px solid red;
-}
+h2.fd.current {}
 
 span.fd-top, a.fd-t, span.fd-u {
-display:inline-block;
-color: #777;/*float:none;*/
+	display:inline-block;
 }
 
 a.fd-t {
-max-width:70%;
-padding-left: 10px;
-margin-top: 5px;
-margin-bottom:5px ;
-color: #777;
+color: #333;
 vertical-align: middle;
-white-space:nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
 }
 
 span.fd-u {
-float:right;
-font-size:1em;
-padding: 0 10px;
-margin: 5px 10px 0 0;
-vertical-align: middle;
-background-color: yellowgreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-/*line-height: 1.6em;*/
-/*font-weight: bold;
-margin-left: 10px;*/
+	padding: 0px 0px;
+	margin: 0px 0px 0px 0px;
+	vertical-align: middle;
 }
 
 span.fd-u.no-unread {
-background-color: lightgrey;
+	color:#777;
 }
 
 span.fd-top {
 vertical-align: middle;
+float:right;
 }
 span.fd-top a {
 text-align:center;
 padding: 5px 20px;
 display:block;
-color:#777;
+color:#aaa;
+
 }
+
 /* end of loop folder */
-
-
 
 .fl-main {}
 
 ul.unstyled {
-margin:0;
-padding:0;
-list-style: none;
+	margin:0;
+	padding:0;
+	list-style: none;
 }
 
 li.folder, li.feed {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 5px;
-margin:0;
-border-bottom:1px solid #ddd;
+	display: table;
+	table-layout:fixed;
+	width:100%;
+	padding: 5px;
+	margin:0;
 }
 
 li.feed {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 5px;
-margin:0;
-border-bottom:1px solid #ddd;
-background-color: white;
-}
-li.feed.current {
-/*background-color: lightyellow;*/
-border-bottom: 2px solid red;
+	display: table;
+	table-layout:fixed;
+	width:100%;
+	padding: 5px;
+	margin:0;
 }
 
-li.feed .favicon {
-
-}
-
-li.feed .title {
-
-}
-li.feed .f-unread
-
-li.feed .f-unread.no-unread
-
-.f-starred
-
-
-li.folder.current, li.feed.current {
-/*background-color: lightyellow;*/
-border-bottom: 2px solid red;
-}
-
-.nbunread {
-
-}
-
-.nbunread.no-unread {
-
-}
-
-
-
+li.feed.current {}
+li.feed .favicon {}
+li.feed .title {}
+li.feed .f-unread {}
+li.feed .f-unread.no-unread {}
+.f-starred {}
+li.folder.current, li.feed.current {}
+.nbunread {}
+.nbunread.no-unread {}
 
 ul.folder {
-margin:0;
-padding:0;
-list-style: none;
+	margin:0;
+	padding:0;
+	list-style: none;
 }
 
 ul.folder > li {
-display: table;
-table-layout:fixed;
-width:100%;
-padding: 0;
-margin:0;
+	display: table;
+	table-layout:fixed;
+	width:100%;
+	padding: 0;
+	margin:0;
 }
 
 ul.folder > li > a.title {
-display:table-cell;
-width:70%;
+	display:table-cell;
+	width:70%;
 }
 ul.folder > li > a.nbunread {
-display:table-cell;
-text-align:right;
-margin-right: 10px;
-padding: 3px 5px;
-color:#fff;
-background: yellowgreen;
+	display:table-cell;
+	text-align:right;
+	margin-right: 10px;
+	padding: 3px 5px;
+	color:#fff;
+	background: yellowgreen;
 }
-
-
 
 ul.feed {
-margin:0;
-padding:0;
-list-style: none;
+	margin:0;
+	padding:0;
+	list-style: none;
 }
-
 
 .fl-feed {
-display: table;
-table-layout:fixed;
-width:100%;
-background:#fff;
-padding: 0;
-margin:0;
+	display: table;
+	table-layout:fixed;
+	width:100%;
+	background:#fff;
+	padding: 0;
+	margin:0;
 }
 .fl-title { 
-display:table-cell;
-width:70%;
+	display:table-cell;
+	width:70%;
 }
 .fl-favicon { 
-display:table-cell;
-width:16px;
+	display:table-cell;
+	width:16px;
 }
 .fl-favicon > img { 
-height:16px;
-width:16px;
+	height:16px;
+	width:16px;
 }
 
-
-
 .fl-nbunread {
-display:table-cell;
+	display:table-cell;
 }
 .fl-btn-edit { }
 .fl-btn-top { }
 
 /* END of FEEDLIST */
 
-/* CONFIG */
-
-/*#config fieldset {
-background:#fff;
-margin:0;
-}
-#config fieldset legend {
-display:block;
-width:100%;
-padding:  20px 10px 5px 10px;
-font-size:1.5em;
-background:#eee;
-color:#777
-}*/
 
 /* */
 fieldset {
@@ -2010,133 +2082,544 @@ fieldset > div {
 padding:3px 10px;
 }
 
+/* */
 
-/* i-menu */
-
-ul#i-menu {
-	width: 100%;
-	list-style: none;
-	margin: 0;
-	margin-top: 10px;
-	padding:10px;
+.phone-hidden {
+	display: none !important;
 }
 
-ul#i-menu li {
-	background: #ddd ;
-	color: #777 ;
-	margin-bottom: 10px ;
-	/*display: table-row;
-	width: 100%;
-	margin: 10px 0px;
-	padding: 10px;*/
-}
-
-ul#i-menu li > a {
-display: block ;
- color: #777 ;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-  text-transform: uppercase;
-}
-
-ul#i-menu li > a:hover{
-
- color: #777 ;
- background: #ccc;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-/* il-menu */
-
-ul#il-menu {
-	display: table;
-	/*table-layout: fixed;*/
-	width: 100%;
-	list-style: none;
-	margin: 0;
-	margin-top: 10px;
-	padding:10px;
-}
-
-ul#il-menu li {
-	display: table-cell;
-	float: none;
-	/*background: #ddd ;*/
-	color: #777 ;
-	margin-left: 10px ;
-	/*display: table-row;
-	width: 100%;
-	margin: 10px 0px;
-	padding: 10px;*/
-}
-
-ul#il-menu li > a {
-display: block ;
- color: #777 ;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-ul#il-menu li > a#next {
-	background: #ddd;
- }
-
-ul#il-menu li > a:hover{
- color: #777 ;
- background: #ccc;
-  line-height: 2em ;
-  padding: 5px 0 5px 10px ;
-}
-
-
-
-/* feedlist */
-
-a.nbitem {
-background-color: limegreen;
--moz-border-radius: 10px;
-border-radius: 10px;
-color:white;
-line-height: 1.6em;
-font-weight: bold;
-margin-top: 0.5em;
-}
-
-
-.no-unread {
-background-color: lightgrey;
-color:white;
-}
-
-/*a.feed {
-	max-width:13em;
-	text-decoration: none;
-	color: #333;
-	margin-left: 5px;
-	white-space:nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}*/
-
-
-/*    *******************************  */
-
-
-
+	';
+	$buffer .= '
 @media (min-width: 769px) {
 
+	.phone-hidden {
+		display: block !important;
+	}
+	.desktop-hidden {
+		display: none !important;
+	}
+	
 	body {
-	font-size:1.4em;
+		font-size:1.4em;
+		background : #f6f6f6;
+		border-top:8px solid steelblue  /*#f6f6f6 *//*#FF6600*/;
+	}
+	
+	/* a suppr ? */ 
+	.full-circle { 
+		display:inline-block;
+		position:absolute;
+		top:0px;
+		left:32px;
+		height: 12px;
+		width: 12px;
+		margin:12px 0px;
+	}
+	
+	/* a suppr ? */ 
+	.il-unread-circle {
+		height: 12px;
+		width: 12px;
 	}
 	
 	ul.bar > li > a {
 		padding:10px 20px;
 	}
 	
-	.i-main {
-		/*margin:0px 10px;*/
+	ul.f {
+		column-width: 20em;
+		column-gap: 10px;
+		-moz-column-width: 20em;
+		-moz-column-gap: 10px;
+		-o-column-width: 20em;
+		-o-column-gap: 10px;
+		-webkit-column-width: 20em;
+		-webkit-column-gap: 10px;
+	}
+	
+	.i-main p {
+		display: inline-block;
+		width:100%	
+	}
+	
+	.i-header {
+		padding:20px 10px 10px 20px;
 		font-size:1.3em;
+	}
+
+
+/* ITEMLIST */
+
+	ul.il-bar { display: none; }
+
+	.il-main-container { 
+		margin-top: 8px;
+		margin-left:18em;	
+	}
+	
+	.il-menu-fixed { 
+		position: fixed !important;
+		left: 0px !important;
+		top: 0px !important;
+		z-index: 999 !important;
+		height:100%;
+		width:16em;
+	}
+	
+	.il-header {
+		padding:0;
+	}
+	
+	.il-feed {
+		padding:20px 0px 16px 0px;
+		margin-left:0px;
+	}
+	
+	.il-unread {
+		display: inline-block;
+		padding-left:8px;
+		background-color:  #ddd;
+	}
+
+	.il-unread-nb {
+		margin-left:0;
+	}
+
+	.il-unread-all-btn {
+		margin:0;
+	}
+
+
+	/* IL-MAIN */
+
+	.il-main {
+		margin:0px 20px 1200px 0px;
+		clear:both;
+	}
+	
+	.il-items-wrapper {
+		padding-top:8px;
+	}
+	
+	.il-item {
+		height:2.5em;
+		line-height:2.5em;
+		padding:0px;
+		margin:0px;
+		vertical-align:middle;
+		border: 1px solid #ddd;
+		border-top-width:0px;
+		border-right-width:0px;
+		border-left-width:0px;
+		-moz-border-radius:0px;
+		-webkit-border-radius: 0px;
+		border-radius:0px;
+	}
+
+	.il-item:first-child {}
+
+	.il-item:last-child {}
+
+	.il-title {
+		position:absolute;
+		top:0px;
+		left:56px;
+		right:14em;
+		font-size: 1em ;/*12.8px*/ /*1.2em*/
+		line-height: 2.5em;
+		color:#666;
+		white-space:nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+		
+	.il-author {
+		position:absolute;
+		top:0px;
+		right:60px;
+		width: 10em;
+		line-height:3em;
+		white-space:nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	.il-favicon {
+		position:absolute;
+		top:0px;
+		right:14em;
+		width: 14px;
+		height:14px;
+		margin-top: 10px;
+	}
+
+	.il-date {
+		position:absolute;
+		top:0px;
+		right:0px;
+		margin-right:10px;
+	}
+
+	.il-btn-1 { display:none; }
+	
+	a.il-btn-back {
+		display:table-cell;
+		width:2em;
+		font-size: 1.5em;
+		vertical-align:middle;
+		height:40px;
+		text-align:center;
+		border-right:1px solid #ccc;
+		color:#333;
+	}
+	
+	a.il-btn-read {
+		position:absolute;
+		left:0px;
+		top:0px;
+		width:30px;	
+		margin:0px;
+		padding:0px;
+		padding-left: 10px;
+		padding-right: 10px;
+		text-transform: none;
+	}
+	a.il-btn-read:hover {
+		background: #B30000;
+		color:#fff;
+	}
+	
+	.il-footer {
+	width:16em;
+	margin: 0px 0px 0px 0px;
+	padding:10px;
+	padding-bottom: 900px;
+	}
+
+	.menu-h {
+		display: block;
+		color:#777;
+		text-transform: uppercase;
+		padding: 1px 10px 1px 1px;
+		font-size: 0.8em;
+		margin-top: 10px;
+	}
+	
+	ul.menu {
+		padding:0px ;
+		margin:10px 0px;
+		padding-bottom: 0px;
+		width:100%;
+		font-size:0.9em;
+	}
+	
+	ul.menu li {
+		display: table-cell;
+		float: none;
+	}
+	
+	ul.menu li span, ul.menu li a {
+		padding: 0px 20px;
+	}
+
+	ul.menu li a:hover, 	ul.menu li.btn-primary a:hover {
+		color: #fff;
+		background: #666/*#3C99CD*/;
+	}
+
+	ul.menu.il-menu-next {
+		margin:0px;
+		padding:0px;
+	}
+	
+	ul.menu.il-menu-next li{
+		display:inline-block;
+		margin:0px;
+		padding:0px;	
+	}
+	ul.menu.il-menu-next li a{
+		display:block;
+		padding:5px 15px;
+	}
+	ul.menu.il-menu-next li a:hover{
+		background-color:#777;
+	}
+	
+	ul.menu.next {
+		display:none;
+		position:fixed;
+		top: 53px;
+		left:0px;
+		display:block;
+		width: 8em;
+		text-align:left;
+		padding-left: 20px;
+	}
+	ul.menu.next li, 	ul.menu.next li.nobg  {
+		padding:0px 0px;
+		display:block;
+		text-align:left;
+	}
+	ul.menu.next li a,	ul.menu.next li span {
+		padding:10px 0px;
+		text-align:left;
+	}
+	
+	ul.menu.next {display:none;}
+		
+	ul.menu.all {
+		display:block;
+		margin:30px 0px 0px 0px;
+		padding:0px 0px;
+		text-transform: uppercase;
+	}
+	ul.menu.all li {
+		display:block;
+		color:#aaa;
+		padding:0px 20px 0px 10px;
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	
+	ul.menu.all li.select {
+		border-right-width: 0px;
+		padding: 4px 20px 4px 10px;
+		margin-left:10px;
+		color:#333;
+		margin:0px -32px 0px 10px;
+		padding:5px 10px;
+	}
+	ul.menu.all li.select span {
+		color:#333;
+	}
+	ul.menu.all li a {
+		margin:0px 0px 0px 10px;
+		padding:0px 10px;
+	}
+	
+	
+	ul.menu.ten {
+		display:block;
+		margin-top:30px;
+		padding-left:20px;
+	}
+	ul.menu.ten li {
+		padding:0px 20px 0px 0px;
+		margin:0px;
+		display:table-cell;
+		background-color: #f6f6f6;
+		color:#aaa;
+	}
+	ul.menu.ten li a {
+		padding:0px 0px;
+		margin:0px;
+		line-height: 1.2em;
+	}
+	
+
+	
+	ul.menu.il-menu-back {
+		display:block;
+		margin:20px 0px 0px 0px;
+		padding:0px 0px;
+	}
+	ul.menu.il-menu-back li {
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	ul.menu.il-menu-back li a{
+		display:block;
+		margin:0px 10px;
+		padding:10px 10px;
+	}
+		
+	ul.menu.il-menu-refresh {
+		display:block;
+		margin:30px 0px 0px 0px;
+		padding:0px;
+		padding-top:0px;
+		font-size:0.9em;
+	}
+	
+	ul.menu.il-menu-refresh li {
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	ul.menu.il-menu-refresh li a{
+		display:block;
+		margin:0px 10px;
+		padding:0px 10px;
+	}
+	
+	ul.menu.il-menu-edit {
+		display:block;
+		margin:0px;
+		padding:0px;
+	}
+	
+	ul.menu.il-menu-edit li {
+		display:block;
+		margin:0px;
+		padding:0px;
+	}
+	ul.menu.il-menu-edit li a{
+		display:block;
+		margin:0px 10px;
+		padding:0px 10px;
+	}
+	
+	ul.menu.il-menu-menu {
+		display:block;
+		margin:0px;
+		padding:0px;
+	}
+	
+	ul.menu.il-menu-menu li {
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	ul.menu.il-menu-menu li a{
+		display:block;
+		margin:0px 10px;
+		padding:0px 10px;
+	}
+	
+	ul.menu.il-menu-top {
+		display:block;
+		margin:0px;
+		padding:0px;
+	}
+	
+	ul.menu.il-menu-top li {
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	ul.menu.il-menu-top li a{
+		display:block;
+		margin:0px 10px;
+		padding:0px 10px;
+	}
+	
+	ul.menu li.nobg{
+		background:#f6f6f6;
+		text-align:center;
+		color:#333;
+	}
+	ul.menu li.btn-primary a{
+		background:#f6f6f6;
+	}
+	
+	ul.menu li.select {
+		margin:0px;
+		padding:9px;
+		border:0px solid #fff;
+	}
+	
+	ul.menu li.select span {
+		margin:0px;
+		padding:0px;
+	}
+	
+	ul.menu  li.btn-btn {
+		margin-left:10px;
+	}
+	ul.menu  li.btn-btn a {
+		color:#aaa;
+		font-size:1em;
+		text-transform: uppercase;
+		font-weight:bold;
+		padding-left:30px;
+	}
+	ul.menu  li.btn-btn a:hover  {
+		background:#ddd;
+		text-decoration:none;
+	}
+		
+	li.btn-back {
+		margin-left:10px;
+		text-align:center;
+		padding:0px 20px;
+	}
+	
+	li.btn-back a {
+		background-color: #eee;
+		font-size:2em;
+		text-transform: uppercase;
+		font-weight:bold;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+	
+	li.btn-back a:hover  {
+		background:#ddd;
+	}
+		
+	ul.menu  li.btn-refresh {
+		background-color:#f6f6f6;
+	}
+	
+	ul.menu  li.btn-refresh a {
+		background-color:#3C6FC3;
+		color:#f6f6f6;
+		font-size:1em;
+		padding-left:30px;
+		margin:0px 20px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+	}
+	ul.menu  li.btn-refresh a:hover  {
+		background:#4678CC;
+		color:rgb(179, 0, 0);
+		text-decoration:none;
+	}
+	
+	.btn-menu {
+		display:block;
+		margin:0px 10px;
+		padding:5px 10px;
+	}
+	
+	.btn-menu:hover {
+		color:#fff;
+		background-color:#3C99CD;
+	}
+	
+	
+	/* ITEM */
+	
+	.i-main-container { 
+		margin-top:0px;
+		margin-left:18em;
+	}
+		
+	.i-header {
+		margin: 16px 20px 16px 0;
+		padding-top:0px;
+		padding-left:0px;
+		border-bottom: 0px solid #ddd;
+	}
+
+	.i-header h1 {
+		font-size:0.8em;
+	}
+		
+	.i-menu-fixed { 
+		position: fixed !important;
+		left: 0px !important;
+		top: 0px !important;
+		z-index: 999 !important;
+		height:100%;
+		padding:0px 0px;
+		width:16em;
+	}
+	
+	.i-main {
+		font-size:1.2em;
 		padding: 20px;
 		column-width: 30em;
 		column-gap: 20px;
@@ -2146,79 +2629,263 @@ color:white;
 		-o-column-gap: 20px;
 		-webkit-column-width: 30em;
 		-webkit-column-gap: 20px;
-		color:#777;
+		color:#333;
+		margin:0px 30px 10px 0;
+		border:8px solid #ddd;
+		background-color:#fff;
+		max-width:45em;
 	}
-
-	div.fl-main,  div.il-main, div#il-footer {
-		/*margin:0px 10px;*/
-		column-width: 20em;
-		column-gap: 10px;
-		-moz-column-width: 20em;
-		-moz-column-gap: 10px;
-		-o-column-width: 20em;
-		-o-column-gap: 10px;
-		-webkit-column-width: 20em;
-		-webkit-column-gap: 10px;
-		/*background-color:#fff;*/
+		
+	.i-main-header {
+		margin-left:0px;
+		display:inline-block;
+		font-size:1em;
+		max-width:45em;
+		border:8px solid #ddd;
+		border-bottom-width:0;
+		background-color:#ddd;
+	}	
+			
+	ul.i-menu-back {
+		margin:0;
+		padding:0 10px;
+		padding-top:20px;
+		display:block;
 	}
-
-	.i-main p {
-	display: inline-block;
-	width:100%	
+	ul.i-menu-back li {
+		margin:0;
+		padding:0;
+		display:block;
+		text-align:left;
+	}
+	ul.i-menu-back li a{ 
+		margin:0;
+		padding:10px 10px;
 	}
 	
-	.i-main img {
-	/*display: inline-block;
-	width:100%	*/
+		
+	ul.i-menu-share {
+		margin:0;
+		padding:0 10px;
+		padding-top:30px;
+	}
+	ul.i-menu-share li{
+		margin:0;
+		padding:0;
+		text-align:left;
+	}
+	ul.i-menu-share li a{ 
+		margin:0;
+		padding:0 10px;
+	}
+		
+	
+	ul.i-menu-star {
+		margin:0;
+		padding:0 10px;
+	}
+	ul.i-menu-star li{
+		margin:0;
+		padding:0;
+		text-align:left;
+	}
+	ul.i-menu-star li a{ 
+		margin:0;
+		padding:0 10px;
+	}
+	
+	ul.i-menu-read {
+		margin:0;
+		padding:0 10px;
+	}
+	ul.i-menu-read li{
+		margin:0;
+		padding:0;
+		text-align:left;
+	}
+	ul.i-menu-read li a{ 
+		margin:0;
+		padding:0 10px;
+	}
+	
+		
+	ul.i-menu-next {
+		margin:0;
+		padding:0 10px;
+		padding-top:30px;
+	}
+	ul.i-menu-next li{
+		margin:0;
+		padding:0;
+		display:table-cell;
+		text-align:left;
+	}
+	ul.i-menu-next li a{ 
+		margin:0;
+		padding:0 10px;
+		text-align:left;
+	}
+	
+	ul.i-menu-top {
+		margin:0;
+		padding:0 10px;
+		padding-top:30px;
+	}
+	
+	ul.i-menu-top li {
+		margin:0;
+		padding:0;
+		display:block;
+		text-align:left;
+	}
+	
+	ul.i-menu-top li a{ 
+		margin:0;
+		padding:0 10px;
+		text-align:left;
+	}
+	
+	/* FEEDS */
+	
+	.fl-main {
+		margin-left:18em;
+		margin-right:16px;
+		margin-top:24px;
+	}
+	
+	.fl-menu-fixed { 
+		position: fixed !important;
+		left: 0px !important;
+		top: 0px !important;
+		z-index: 999 !important;
+		height:100%;
+		width:16em;
+		text-transform: uppercase;
 	}
 
-	.i-header {
-	padding:20px 10px 10px 20px;
-	font-size:1.3em;
+	ul.j { 
+		padding:16px 10px 16px 10px;
+	}
+	
+	ul.j li {
+		padding: 0px 8px;
+		padding: 2px 10px;
+		margin:0px;
+		font-size:0.7em;
+		border: 0px solid #ddd;
+		border-bottom-width:0px;
+		background-color: transparent;
 	}
 
-	.zoom {
-/*	-webkit-transition: all .1s ease-out;
-   -moz-transition: all .1s ease-out;
-   -o-transition: all .1s ease-out;
-   transition: all .1s ease-out;
-    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
-	}
-	.zoom:hover {
- /*  -moz-transform: scale(.8);
-   -webkit-transform: scale(1.2);
-   -o-transform: scale(1.2);
-   transform: scale(1.05);
-   -ms-transform: scale(1.2);
-   -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	box-shadow: 0 0 5px rgba(0,0,0,0.5);*/
+	ul.j li:last-child {
+		border-top: 0px solid #ddd;
+		border-bottom: 0px solid #ddd;
 	}
 
-	.il-title { 
-	font-size: 1em /*12.8px*/ ;/*1.2em*/
-	line-height: 1.2em;
-	color:#666;
-}
-
-}
-
-a:hover { 
-color: dodgerblue;
-}
-
-/*
-@media (max-width: 640px) {
-	div#feedlist-main ul li {
+	ul.j li#all-subscriptions {
+		margin-bottom:16px;
+		border: 0px solid #ddd;
+	}
+	
+	h2.fd {
+		display:inline-block;
+		color:#333;
+		background-color:#ddd;
+		padding:8px 16px 0px 8px;
+		font-weight:bold;
+		margin:0;
+	}
+	
+	a.fd-t {
+		font-size: 0.9em;
+		color: #333;
+		vertical-align: middle;
 		white-space:nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
 	}
-}
-*/
+	
 
+	ul.f {
+		margin:0px 0px 16px 0px;
+		background-color:#fff;
+		padding:16px ;
+		border:8px solid #ddd;
+	}
+		
+	ul.f > li {
+		padding:0px ;
+		margin-top:0px;
+		border-bottom:0px solid #ddd;
+	}
+	
+	a.f-t {
+		font-size:0.9em;
+		max-width:70%;
+		padding: 3px 0 3px 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		color: #333;
+		vertical-align: middle;
+		white-space:nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	span.f-u {
+		font-size:0.9em;
+	}
+	
+	
+	ul.menu.fl-menu-back {
+		display:block;
+		margin:20px 0px 0px 0px;
+		padding:0px 0px;
+	}
+	ul.menu.fl-menu-back li {
+		display:block;
+		margin:0px;
+		padding:0px 0px;
+	}
+	ul.menu.fl-menu-back li a{
+		display:block;
+		margin:0px 10px;
+		padding:10px 10px;
+	}
+	
+	ul.menu li.fl-menu-back {
+		padding:0px;
+		text-align:left;
+	}
+	
+	ul.menu li.fl-menu-back a {
+		display:block;
+		margin:0px 0px;
+		padding:10px 10px;
+	}
+	
+	ul.menu li.fl-menu-back a:hover {
+		color:#fff;
+		background-color:#666;
+	}
+		
+	ul.menu li.fl-menu-top {
+		padding:0px;
+		text-align:left;
+	}
+	
+	ul.menu li.fl-menu-top a {
+		display:block;
+		margin:0px;
+		padding:10px 10px;
+	}
+	
+	ul.menu li.fl-menu-top a:hover {
+		color:#fff;
+		background-color:#666;
+	}
+	
+}
 	';
 
 	// Remove comments
@@ -2235,9 +2902,12 @@ color: dodgerblue;
 	</style>
 <?php } ?>
 
-<?php if (is_file('inc/user_alt.css')) { ?>
-	<link type="text/css" rel="stylesheet" href="inc/user_alt.css?version=<?php echo $version;?>" />
-<?php } ?>
+
+<!--
+<?php// if (is_file('inc/user_alt.css')) { ?>
+	<link type="text/css" rel="stylesheet" href="inc/user_alt.css?version=<?php //echo $version;?>" />
+<?php// } ?>
+-->
 
 <!-- soluce for bug android http://code.google.com/p/android/issues/detail?id=15437-->
 <script type="text/javascript">function scrollid(element){   var ele = document.getElementById(element);   window.scrollTo(ele.offsetLeft,ele.offsetTop); }</script>
@@ -3349,102 +4019,82 @@ color: dodgerblue;
         extract(altFeedPage::$var);
 ?>
 <header>
-	<ul class="bar">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		
-<!--
-			<li><a class="txtleft pl1" href="?config" Title="Jump to feed list">Config</a></li>
--->
-<!--
-			<li><a class="txtcenter" href="<?php echo $query.'update='.$currentHash; ?>"  title="Update <?php echo $currentHashType; ?> manually">Up!</a></li>
--->
-			<li><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer" onClick="scrollid('lf-footer');return false;">Menu</a></li>
+	<ul class="navbar navbar-top desktop-hidden">
+		<li ><a href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
 	</ul>
 </header>
+
 
 <!-- BEGIN of FL-MAIN -->
 <div class="fl-main">
  
+	<div class="fl-menu-fixed">
+
+		 <ul class="menu fl-menu-back phone-hidden"> 
+			<li class="btn"><a href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt; Items</a></li>
+		 </ul> 
+
+		<!-- BEGIN of JUMPER -->
+		<ul class="j">
+
+			<!-- ALL FEEDS -->
+			<li id="all-subscriptions" class="j-folder<?php if ($currentHash == 'all') echo ' current'; ?>">
+				<?php if($feedsView['all']['nbUnread']==!0) { ?><div class="j-circle"></div><?php } ?>
+				<a class="j-t"  href="<?php echo '?currentHash=all'; ?>"><?php echo $feedsView['all']['title']; ?></a>
+				<span class="j-u<?php echo ($feedsView['all']['nbUnread']==0?' no-unread':'');?>">
+					<?php echo $feedsView['all']['nbUnread']; ?>
+				</span>
+				<span class="j-jmp"><a  href="#go to unrated feed">v</a></span>
+			</li>
+		
+			<!-- LOOP FOLDER JUMPER-->
+			<?php foreach ($feedsView['folders'] as $hashFolder => $folder) {  $isOpen = $folder['isOpen'];  ?>
+				
+			 <li  class="j-folder<?php if ($currentHash == $hashFolder) echo ' current'; ?><?php echo ($folder['nbUnread']==0?' no-unread':'');?><?php if ($autohide and $folder['nbUnread']== 0) { echo ' autohide-folder';} ?>">
+				<?php if($folder['nbUnread']==!0) { ?><div class="j-circle"></div><?php } ?>
+				<a class="j-t" href="<?php echo '?currentHash='.$hashFolder.'#folder-'.$hashFolder; ?>"><?php echo htmlspecialchars($folder['title']); ?></a> 
+				  
+				  <span class="j-u<?php echo ($folder['nbUnread']==0?' no-unread':'');?>">
+					<?php echo $folder['nbUnread']; ?>
+				</span>
+				<span class="j-jmp"><a class="fl-btn-jmp" href="<?php echo $query.'&amp;feedview';?>#folder-<?php echo $hashFolder; ?>">v</a></span>
+			 </li>
+
+			<?php } ?> 
+			<!-- END of LOOP FOLDER JUMPER-->
+
+		</ul>
+		<!-- END of JUMPER -->  
+
+		<ul class="menu"> 
+			<li class="fl-menu-top phone-hidden"><a class="" href="<?php echo $query.'&amp;feedview'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		</ul>
+
+	</div>
+	<!-- END of fl-menu-fixed -->  
  
- <!-- BEGIN of JUMPER -->
-<ul class="j">
-	
-	<!-- ALL FEEDS -->
-	<li id="all-subscriptions" class="j-folder<?php if ($currentHash == 'all') echo ' current'; ?>">
-		<span class="j-jmp"><a  href="#go to unrated feed">v</a></span>
-		<a class="j-t"  href="<?php echo '?currentHash=all'; ?>"><?php echo $feedsView['all']['title']; ?></a>
-		<span class="j-u<?php echo ($feedsView['all']['nbUnread']==0?' no-unread':'');?>">
-			<?php echo $feedsView['all']['nbUnread']; ?>
-		</span>
-	</li>
-	
-	<!-- STARRED -->
-<!--
-	
-		<li id="folder-<?php echo $hashFolder; ?>" class="j-folder<?php if ($currentHash == $hashFolder) echo ' current-folder'; ?><?php if ($autohide and $folder['nbUnread']== 0) { echo ' autohide-folder';} ?>">
-		<span class="btn btn-jmp"><a class="btn-jmp" href=""></a></span>
-		<a  class="title"  href="<?php echo '?currentHash=all'; ?>">Starred feeds</a>
-		<a class="nbunread<?php if ($folder['nbUnread']== 0) { echo ' no-unread';} ?>" href="<?php echo ($feedsView['all']['nbUnread']==0?'?currentHash=all&unread':$query.'read').'=all'; ?>" title="Mark all as <?php echo ($feedsView['all']['nbUnread']==0?'unread':'read');?>"><?php echo $feedsView['all']['nbUnread']; ?></a>
-		</span>
-	</li>
--->
-	
-	<!-- UNRATED -->
-<!--
-	<li  class="j-folder">
-		<span class="btn btn-jmp"><a class="fl-btn-jmp" href="#go to unrated feed">v</a></span>
-		<a class="title"  href="<?php echo '?currentHash=all'; ?>">Unrated feeds</a>
-		<a class="nbunread<?php if ($folder['nbUnread']== 0) { echo ' no-unread';} ?>" href="<?php echo ($feedsView['all']['nbUnread']==0?'?currentHash=all&unread':$query.'read').'=all'; ?>" title="Mark all as <?php echo ($feedsView['all']['nbUnread']==0?'unread':'read');?>"><span class="label"><?php echo $feedsView['all']['nbUnread']; ?></span></a>
-	</li>			
--->
-  
-  	<!-- LOOP FOLDER JUMPER-->
-	<?php foreach ($feedsView['folders'] as $hashFolder => $folder) {  $isOpen = $folder['isOpen'];  ?>
-        
-     <li  class="j-folder<?php if ($currentHash == $hashFolder) echo ' current'; ?><?php if ($autohide and $folder['nbUnread']== 0) { echo ' autohide-folder';} ?>">
-		 <span class="j-jmp"><a class="fl-btn-jmp" href="<?php echo $query.'&amp;feedview';?>#folder-<?php echo $hashFolder; ?>">v</a></span>
-		 <a class="j-t" href="<?php echo '?currentHash='.$hashFolder.'#folder-'.$hashFolder; ?>"><?php echo htmlspecialchars($folder['title']); ?></a> 
-         <span class="j-u<?php echo ($folder['nbUnread']==0?' no-unread':'');?>">
-			<?php echo $folder['nbUnread']; ?>
-		</span>
-    </li>
-
-	<?php } ?> 
-   	<!-- END of LOOP FOLDER JUMPER-->
-
- </ul>
-<!-- END of JUMPER -->  
-
    
 <!-- FOLDER -->
 
-<!--
-<ul class="unstyled">
--->
-
 	<!-- UNRATED FEEDS --> 
-<!--
-	<li class="folder">
--->
-		<h2 class="fd">
-			<span class="fd-top"><a  href="#top">^</a></span>
-			<a class="fd-t"  href="#">Unrated feeds</a>
-		</h2>
+	<h2 class="fd">
+		<a class="fd-t"  href="#">Unrated feeds</a>
+	</h2>
 		
-		<ul class="f">
+	<ul class="f">
 			
-			<?php
-			   foreach ($feedsView['all']['feeds'] as $feedHash => $feed) {
-			$atitle = trim(htmlspecialchars($feed['description']));
-			if (empty($atitle) || $atitle == ' ') {
-			$atitle = trim(htmlspecialchars($feed['title']));
-			}
-			if (isset($feed['error'])) {
-			$atitle = $feed['error'];
-			}
-			?>
+		<?php
+	    foreach ($feedsView['all']['feeds'] as $feedHash => $feed) {
+		$atitle = trim(htmlspecialchars($feed['description']));
+		if (empty($atitle) || $atitle == ' ') {
+		$atitle = trim(htmlspecialchars($feed['title']));
+		}
+		if (isset($feed['error'])) {
+		$atitle = $feed['error'];
+		}
+		?>
 					
-			<li id="<?php echo 'feed-'.$feedHash; ?>" class="feed<?php if ($feed['nbUnread']!== 0) echo ' has-unread'; ?><?php if ($currentHash == $feedHash) echo ' current-feed'; ?><?php if ($autohide and $feed['nbUnread']== 0) echo ' autohide-feed'; ?>">
+			<li id="<?php echo 'feed-'.$feedHash; ?>" class="feed<?php if ($feed['nbUnread']!== 0) echo ' has-unread'; ?><?php echo ($folder['nbUnread']==0?' no-unread':'');?><?php if ($currentHash == $feedHash) echo ' current-feed'; ?><?php if ($autohide and $feed['nbUnread']== 0) echo ' autohide-feed'; ?>">
 				<!-- FAVICON -->
 				<?php if ($addFavicon) { ?>
 				 <span class="f-f"><img src="<?php echo $kf->getFaviconFeed($feedHash); ?>" height="16" width="16" title="favicon" alt="favicon"/></span>
@@ -3452,30 +4102,23 @@ color: dodgerblue;
 				<!-- TITLE -->
 				<a class="f-t <?php echo (isset($feed['error'])?' text-error':''); ?>" href="<?php echo '?currentHash='.$feedHash.'#feed-'.$feedHash; ?>" title=""><?php echo htmlspecialchars($feed['title']); ?></a>
 				<!-- NBUNREAD -->
-				<?php if ($feed['nbUnread']!== 0) { ?><span class="f-u" ><?php echo $feed['nbUnread']; ?></span><?php } ?>
+				<?php if ($feed['nbUnread']!== 0) { ?><span class="f-u" >(<?php echo $feed['nbUnread']; ?>)</span><?php } ?>
 			 </li>
 
-			<?php  } ?>
-		</ul> 
-<!--
-	</li>
--->
+		<?php  } ?>
+	</ul> 
 	<!-- END of UNRATED FEEDS -->            
            
-     <!-- LOOP FOLDERS -->    
+    <!-- LOOP FOLDERS -->    
     <?php  foreach ($feedsView['folders'] as $hashFolder => $folder) { $isOpen = $folder['isOpen']; ?>
 
-<!--
-	<li id="folder-<?php echo $hashFolder; ?>" class="folder<?php if ($currentHash == $hashFolder) echo ' current'; ?><?php if ($autohide and $folder['nbUnread']== 0) { echo ' autohide-folder';} ?>">
--->
 		<h2  id="folder-<?php echo $hashFolder; ?>" class="fd<?php if ($currentHash == $hashFolder) echo ' current'; ?>">
-			<span class="fd-top"><a  href="#top">^</a></span>
 			<a class="fd-t" href="<?php echo '?currentHash='.$hashFolder.'#folder-'.$hashFolder; ?>"><?php echo htmlspecialchars($folder['title']); ?></a>
-			 <span class="fd-u<?php echo ($folder['nbUnread']==0?' no-unread':'');?>"><?php echo $folder['nbUnread']; ?></span>
+			<span class="fd-u<?php echo ($folder['nbUnread']==0?' no-unread':'');?>">(<?php echo $folder['nbUnread']; ?>)</span>
 		</h2>
 				
          <!-- LOOP FEEDS -->          
-         <ul class="f">
+        <ul class="f">
          <?php
                foreach ($folder['feeds'] as $feedHash => $feed) {
             $atitle = trim(htmlspecialchars($feed['description']));
@@ -3489,83 +4132,40 @@ color: dodgerblue;
 
             <li id="folder-<?php echo $hashFolder; ?>-feed-<?php echo $feedHash; ?>" class="feed<?php if ($feed['nbUnread']!== 0) echo ' has-unread'; ?><?php if ($currentHash == $feedHash) echo ' current'; ?><?php if ($autohide and $feed['nbUnread']== 0) { echo ' autohide-feed';} ?>">
              
-				<!-- favicon-->
+				<!-- FAVICON -->
 				<?php if ($addFavicon) { ?>
 					<span class="f-f">
-					<img src="<?php echo $kf->getFaviconFeed($feedHash); ?>" height="16" width="16" title="favicon" alt="favicon"/>
+						<img src="<?php echo $kf->getFaviconFeed($feedHash); ?>" height="16" width="16" title="favicon" alt="favicon"/>
 					</span>
 				 <?php } ?>
 				  
 				<!-- TITLE-->            
-				<a class="f-t<?php echo (isset($feed['error'])?' text-error':''); ?> inbl pl1" href="<?php echo '?currentHash='.$feedHash.'#folder-'.$hashFolder.'-feed-'.$feedHash; ?>" title=""><?php echo htmlspecialchars($feed['title']); ?></a>
+				<a class="f-t<?php echo (isset($feed['error'])?' text-error':''); ?>" href="<?php echo '?currentHash='.$feedHash.'#folder-'.$hashFolder.'-feed-'.$feedHash; ?>" title=""><?php echo htmlspecialchars($feed['title']); ?></a>
 				<!-- NBUNREAD -->
-				<?php if ($feed['nbUnread']!== 0) { ?><span class="f-u" ><?php echo $feed['nbUnread']; ?></span><?php } ?>
-<!--
-				<a class="btn-starred inbl right mr1 smaller" href="">*</a> 
--->
+				<?php if ($feed['nbUnread']!== 0) { ?><span class="f-u" >(<?php echo $feed['nbUnread']; ?>)</span><?php } ?>
 				
             </li>
          <?php } ?>
-         </ul>
-         <!-- END of LOOP FEEDS -->        
+         
+		</ul>
+		 <!-- END of LOOP FEEDS -->        
      
-<!--
-     </li>
--->
-	<?php } ?> 
+     <?php } ?> 
     <!-- END of LOOP FOLDERS --> 
-  
-<!--
-</ul>
--->
-<!-- END of FOLDER -->  
   
 </div>
 <!-- END of FL-MAIN -->
 
-
 <!--	BEGIN of I-FOOTER -->
-
-<div id="lf-footer">
-<!--
-	<ul id="i-menu" class="big">
-		  <li>
-			<?php if ($item['read'] == 1) { ?><a class="item-mark-as" href="<?php echo $query.'unread='.$itemHash; ?>">Unread</a>
-			<?php } else { ?><a class="item-mark-as" href="<?php echo $query.'read='.$itemHash; ?>">Clear</a>
-			<?php } ?>
-		</li>
-		<li><a class="item-shaarli" href="<?php echo $query.'shaarli='.$itemHash; ?>"><span class="label label-expanded">Later</span></a></li>
-		<li><a class="item-shaarli" href="<?php echo $query.'shaarli='.$itemHash; ?>"><span class="label label-expanded">Share ></span></a></li>
-    </ul>
--->
-</div>
-
+<div id="lf-footer"></div>
 <!--	END of I-FOOTER -->
 
-<div>
-	<ul class="menucom">
-		<li><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
-		<?php if (Session::isLogged()) { ?><li><a href="?logout" class="admin" title="Logout">Logout</a></li>
-		<?php } else { ?><li><a href="?login">Login</a></li><?php } ?>
-		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
-		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
-		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
-		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
-		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
-	</ul>
-</div>
-
 <footer>
-	<ul class="bar fixdown">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php echo $query.'&amp;feedview'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
-		<li ><a class="txtright pr1" href="<?php echo $query.'&amp;feedview'; ?>#lf-footer"  onClick="scrollid('lf-footer');return false;">Menu</a></li>
+	<ul  class="navbar navbar-bottom desktop-hidden">
+		<li><a href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li><a href="<?php echo $query.'&amp;feedview'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
 	</ul>
 </footer>	
-
-
-
-
 <?php
     }
 
@@ -3573,163 +4173,205 @@ color: dodgerblue;
     {
         extract(altFeedPage::$var);
 ?>
+<!-- BEGIN of MAIN-DESK -->
+<div  class="il-main-container">
+	
 <header>
-	<ul class="bar">
-		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php echo $query.'update='.$currentHash; ?>#menu" title="Update <?php echo $currentHashType; ?> manually">Update</a></li>
-		<li><a class="txtright pr1" href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
+	<ul class="navbar navbar-top desktop-hidden">
+		<li><a href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt;</a></li>
+		<li><a href="<?php echo $query.'update='.$currentHash; ?>#menu" title="Update <?php echo $currentHashType; ?> manually">Refresh</a></li>
+		<li><a href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
 	</ul>
 </header>
-
 
 <!--BEGIN of IL-HEADER -->
 <div class="il-header">
 	
-	<!-- FOLDER/FEED TITLE -->
-	<h1 class="il-feed">
-		<!-- NBUNREAD -->
-		<span class="il-unread<?php echo ( $altCurrentHashUnread==0?' no-unread':''); ?>"><?php echo $altCurrentHashUnread ?></span>
-<?php if (isset($altCurrentHashView)) { ?><?php echo $altCurrentHashView ?><?php } ?>
-<!--
-		<span class="il-new"><a  href="<?php echo $query.'read='.$currentHash; ?>"  title="Mark <?php echo $currentHashType; ?> as read">+18</a></span>
--->
-	</h1>
+	<h1 class="il-feed"><?php if (isset($altCurrentHashView)) { ?><?php echo $altCurrentHashView ?><?php } ?></h1>
+	
+	<div class="il-unread<?php echo ( $altCurrentHashUnread==0?' no-unread':''); ?>">
+		<?php if ($altCurrentHashUnread==!0) { ?>
+			<a class="il-unread-all-btn" href="<?php echo $query.'read='.$currentHash; ?>"  title="Mark <?php echo $currentHashType; ?> as read">x</a>
+		<?php }  ?>
+		<div class="il-unread-nb"><?php echo $altCurrentHashUnread ?> <small>new</small></div>
+	</div>
 
 </div>
 <!-- END of IL-HEADER -->
 
-
 <?php if ($filter === 'unread' and $altCurrentHashUnread==0) { ?>
-			 <div class="il-message">There is no unread items, view :  <a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">All</a>
-			 ?</div>
+	 <div class="il-message">There is no unread items, view :  <a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">All</a> ?</div>
 <?php } ?>
-
 
 <!-- BEGIN of IL-MAIN -->
 <div class="il-main">
 
-<!-- LOOP ITEM -->
-<?php
-     foreach (array_keys($items) as $itemHash){
-     $item = $kf->getItem($itemHash);
-?>
+	<div class="il-items-wrapper">
+	
+		<!-- LOOP ITEM -->
+		<?php
+			 foreach (array_keys($items) as $itemHash){
+			 $item = $kf->getItem($itemHash);
+		?>
 				
-	<!-- BEGIN of IL-ITEM -->
-	<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?> zoom">
+			<!-- BEGIN of IL-ITEM -->
+			<div id="item-<?php echo $itemHash; ?>" class="il-item<?php echo ($item['read']==1?' read':''); ?><?php echo ($itemHash==$currentItemHash?' current':''); ?><?php if (isset($item['starred']) && $item['starred']===1) echo ' starred'; ?> zoom">
 
-		<!-- TITLE -->
-		<h2  class="il-title">
-			<a href="<?php echo $query.'star='.$itemHash;?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>"><?php echo $item['title']; ?></a>
-		</h2>
-		<!--- .((!isset($_GET['open']) or $currentItemHash != $itemHash)?'&amp;open':'') -->
+				<?php if (isset($item['starred']) && $item['starred']===1) { ?>
+					<div class="full-circle full-circle-vu -il-vu"></div>
+				<?php } else if ($item['read']===0) { ?>
+					<div class="full-circle full-circle-new"></div>
+				<?php }  ?>
+
+				<!-- TITLE -->
+				<h2  class="il-title">
+					<a href="<?php echo $query.'star='.$itemHash;?>" data-toggle="collapse" data-target="#item-div-<?php echo $itemHash; ?>">
+					<?php echo $item['title']; ?></a>
+				</h2>
+				
+				<!--	FAVICON	-->
+				<?php if ($addFavicon) { ?><img class="il-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
+				
+				<!--	AUTHOR -->
+				<span class="il-author small"><a  href="<?php echo '?currentHash='.substr($itemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
+				
+				<!--	DATE -->
+				<span class="il-date small"><?php echo $item['time']['list']; ?></span>
+								
+				<!-- URL -->
+				<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">url</a>
+				
+				<?php if (!$item['read'] == 1) { ?>
+				<a class="il-btn-read" href="<?php echo $query.'read='.$itemHash; ?>">x</a>
+				 <?php } ?>
+									
+			</div>
+			<!-- END of IL-ITEM -->
 		
-		
-		<!--	FAVICON	-->
-		<?php if ($addFavicon) { ?><img class="il-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
-		
-		<!--	AUTHOR -->
-		<span class="il-author small"><a  href="<?php echo '?currentHash='.substr($itemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
-		
-		<!--	DATE -->
-		<span class="il-date small"><?php echo $item['time']['list']; ?></span>
-		
-		<!-- URL -->
-		<a class="il-url small" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>">url</a>
-		
-		<?php if (isset($item['starred']) && $item['starred']===1) { ?>
-        <a class="il-btn small" href="<?php echo $query.'unstar='.$itemHash; ?>">unkeep</a>
-        <?php } else { ?>
-        <a class="il-btn small" href="<?php echo $query.'star='.$itemHash; ?>">keep</a>
-        <?php }?>
-        
-         <?php if (!isset($_GET['stars'])) { ?>
-        <?php if ($item['read'] == 1) { ?>
-        <a class="il-btn small" href="<?php echo $query.'unread='.$itemHash; ?>">unread</a>
-        <?php } else { ?>
-        <a class="il-btn small" href="<?php echo $query.'read='.$itemHash; ?>">read</a>
-        <?php } ?>
-        <?php } ?>
-			
+		<?php } ?>
+		<!-- END of ITEM LOOP -->
+
 	</div>
-	<!-- END of IL-ITEM -->
-		
-<?php } ?>
-<!-- END of ITEM LOOP -->
+	<!-- END of ITEMS WRAPPER -->
+
+	<ul class="menu il-menu-next -phone-hidden">
+		<li class="btn"><a class="previous-page<?php echo ($currentPage === 1)?' disabled':''; ?>" href="<?php echo $query.'previousPage='.$currentPage; ?>">&lt;</a></li>
+		<li class=""><?php echo $currentPage.'/'.$maxPage; ?></li>
+		<li class="btn"><a class="next-page<?php echo ($currentPage === $maxPage)?' disabled':''; ?>" href="<?php echo $query.'nextPage='.$currentPage; ?>">Next ></a></li>
+	</ul>	
 	
 </div>
 <!-- END of IL-MAIN -->
 
 
-
 <!--	BEGIN of IL-FOOTER -->
-<div id="il-footer">
+<div id="il-footer" class="il-footer">
 	
-	<ul class="menu big">
-		<li class="btn"><a class="txtcenter previous-page<?php echo ($currentPage === 1)?' disabled':''; ?>" href="<?php echo $query.'previousPage='.$currentPage; ?>">&lt;</a></li>
-		<li class="nobg txtcenter"><?php echo $currentPage.'/'.$maxPage; ?></li>
-		<li class="btn btn-primary" style="width:50%"><a id="next" class="next-page<?php echo ($currentPage === $maxPage)?' disabled':''; ?>" href="<?php echo $query.'nextPage='.$currentPage; ?>">Next ></a></li>
-	</ul>
-
-	<ul class="menu big">
-		<li class="btn btn-primary"><a href="<?php echo $query.'read='.$currentHash; ?>" class="admin" title="Mark <?php echo $currentHashType; ?> as read">Mark <?php echo $currentHashType; ?> as read</a></li>
-	</ul>
+	<div class="il-menu-fixed">
 	
-	<ul class="menu big">
-		<li class="nobg">Filter : </li> 	
-		<?php if ($filter === 'unread') { ?>
-			 <li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">All</a></li>
-			 <li class="select"><span>Unread only</span></li> 
-		<?php } else { ?>
-			<li class="select"><span>All</span></li> 
-			<li class="btn"><a href="<?php echo $query.'filter=unread'; ?>" title="Filter: show unread items">Unread only</a></li>
-		<?php } ?>	
-	</ul>
+		<ul class="menu il-menu-back phone-hidden">
+			<li class="btn"><a class="" href="<?php echo $query.'&amp;feedview'; ?>" Title="Go to feed list">&lt; Feeds</a></li>
+		</ul>
+	
+		<ul class="menu txtcenter next">
+			<li class="btn"><a class="txtcenter previous-page<?php echo ($currentPage === 1)?' disabled':''; ?>" href="<?php echo $query.'previousPage='.$currentPage; ?>">&lt; Prev.</a></li>
+			<li class="-nobg -txtcenter -big"><?php echo $currentPage.'/'.$maxPage; ?></li>
+			<li class="btn -btn-primary" style="-width:50%"><a id="next" class="next-page<?php echo ($currentPage === $maxPage)?' disabled':''; ?>" href="<?php echo $query.'nextPage='.$currentPage; ?>">Next ></a></li>
+		</ul>
+		
+		<ul class="menu -txtcenter all">
+			<!--li class="pr1 small">Filter :</li-->
+			<?php if ($filter === 'unread') { ?>
+				 <li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">All</a></li>
+				 <li class="select"><span>New</span></li>
+				 <li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">Vu</a></li> 
+				 <li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">Star</a></li> 
+			<?php } else { ?>
+				<li class="select"><span>All</span></li> 
+				<li class="btn"><a href="<?php echo $query.'filter=unread'; ?>" title="Filter: show unread items">New</a></li>
+				<li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">Vu</a></li> 
+				<li class="btn"><a href="<?php echo $query.'filter=all'; ?>" title="Filter: show all (read and unread) items">Star</a></li> 
+			<?php } ?>	
+		</ul>
          
+		<ul class="menu -txtcenter ten">
+			<li class="-btn"><a class="" href="<?php echo $query.'byPage=10'; ?>">10</a></li>
+			<li class="-btn"><a class="" href="<?php echo $query.'byPage=25'; ?>">25</a></li>
+			<li class="-btn"><a class="" href="<?php echo $query.'byPage=50'; ?>">50</a></li>
+		</ul>         
+	
+		<ul class="menu il-menu-refresh phone-hidden">
+			<li class="btn -btn-refresh"><a href="<?php echo $query.'update='.$currentHash; ?>" class="admin" title="Update <?php echo $currentHashType; ?> manually">Refresh <?php echo $currentHashType; ?></a></li>
+		</ul>
+	
+		<ul class="menu il-menu-edit phone-hidden">			
+			<li class="btn"><a href="<?php echo $query.'edit='.$currentHash; ?>" class="admin" title="Edit <?php echo $currentHashType; ?>">Edit <?php echo $currentHashType; ?></a></li>
+		</ul>
+	
+		<ul class="menu il-menu-menu phone-hidden">
+			<li class="btn -btn-back"><a href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
+		</ul>
+	
+		<ul class="menu il-menu-top phone-hidden">
+			<li class="btn -btn-back">
+				<a  href="<?php echo $query.$currentHash; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a>
+			</li>
+		</ul>
+	
+	</div>
+	
+	
 	<ul class="menu big">
-		<li class="nobg">Items per page : </li> 	
-		<li class="btn"><a class="" href="<?php echo $query.'byPage=10'; ?>">10</a></li>
-		<li class="btn"><a class="" href="<?php echo $query.'byPage=25'; ?>">25</a></li>
-		<li class="btn"><a class="" href="<?php echo $query.'byPage=50'; ?>">50</a></li>
-	</ul>         
-
-	<ul class="menu big">
-		<li class="btn"><a href="<?php echo $query.'unread='.$currentHash; ?>" class="admin" title="Mark <?php echo $currentHashType; ?> as unread">Mark <?php echo $currentHashType; ?> as unread</a></li>
+		<li class="btn -btn-primary"><a href="<?php echo $query.'read='.$currentHash; ?>" class="admin" title="Mark <?php echo $currentHashType; ?> as read">Mark <?php echo $currentHashType; ?> as read</a></li>
 	</ul>
 
 	<ul class="menu big">
-		<li class="btn"><a href="<?php echo $query.'update='.$currentHash; ?>" class="admin" title="Update <?php echo $currentHashType; ?> manually">Update <?php echo $currentHashType; ?></a></li>
+		<li class="btn"><a href="<?php echo $query.'update='.$currentHash; ?>" class="admin" title="Update <?php echo $currentHashType; ?> manually">Refresh <?php echo $currentHashType; ?></a></li>
+	</ul>
+	
+	<ul class="menu big">
+		<li class="btn"><a href="<?php echo $query.'unread='.$currentHash; ?>" class="" title="Mark <?php echo $currentHashType; ?> as unread">Mark <?php echo $currentHashType; ?> as unread</a></li>
 	</ul>
 
-	<ul class="menu big">			
-		<li class="btn"><a href="<?php echo $query.'edit='.$currentHash; ?>" class="admin" title="Edit <?php echo $currentHashType; ?>">Edit <?php echo $currentHashType; ?></a></li>
+	<ul class="menu big">
+		<li class="btn"><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
+	</ul>
+	
+	<ul class="menu big">
+		<?php if (Session::isLogged()) { ?><li class="btn"><a href="?logout" class="admin" title="Logout">Logout</a></li>
+		<?php } else { ?><li class="btn"><a href="?login">Login</a></li><?php } ?>
+	</ul>
+	
+	<ul class="menu big">
+		<?php if ($kf->kfc->isLogged()) { ?><li class="btn"><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
+	</ul>
+	
+	<ul class="menu big">
+		<li class="btn"><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
+	</ul>
+	
+	<ul class="menu big">
+		<li class="btn"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?> by Tontof</a> </li>
+	</ul>
+
+	<ul class="menu big">
+		<li class="btn"><a href="?tpl=std">Switch to std tpl</a></li>
 	</ul>
 
 </div>
 <!--	END of IL-FOOTER -->
 
-<div>
-	<ul class="menucom">
-		<li><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
-		<?php if (Session::isLogged()) { ?><li><a href="?logout" class="admin" title="Logout">Logout</a></li>
-		<?php } else { ?><li><a href="?login">Login</a></li><?php } ?>
-		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
-		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
-		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a> </li>
-		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
-		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
-	</ul>
-</div>
-
 
 <footer>
-	<ul  class="bar fixdown">
-		<li><a class="txtleft pl1" href="<?php echo $query.'&amp;feedview'; ?>" Title="Jump to feed list">&lt;</a></li>
-		<li><a class="txtcenter"   href="<?php echo $query.$currentHash; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
-		<li><a class="txtright pr1" href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
+	<ul  class="navbar navbar-bottom desktop-hidden">
+		<li><a href="<?php echo $query.'&amp;feedview'; ?>" Title="Jump to feed list">&lt;</a></li>
+		<li><a href="<?php echo $query.$currentHash; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li><a href="#il-footer" onClick="scrollid('il-footer');return false;">Menu</a></li>
 	</ul>
 </footer>
 
-
+</div>
+<!-- END of IL-MAIN-CONTAINER -->
 
 <?php
     }
@@ -3739,108 +4381,103 @@ color: dodgerblue;
     {
         extract(altFeedPage::$var);
 ?>
-
-
-<?php
-/*if ($kfc->isLogged()) {*/
-    // mark all as starred : item, feed, folder, all
-  /*  $kf->loadData();
-    $ks->loadData();*/
-
-   /* $starred = 1;
-    $itemitem = $kf->loadItem($currentItemHash, false);
-    $feed = $kf->getFeed(substr($currentItemHash, 0, 6));*/
-  /*  $needSave = $ks->markItem($currentItemHash, $starred, $feed, $itemitem);
-   
-    if ($needSave) {
-        $ks->writeData();
-    }*/
-    
-/*}*/
-?>
 <?php $item = $kf->getItem($currentItemHash);  ?>
 
+<!-- BEGIN of MAIN-DESK -->
+<div  class="i-main-container">
+
 <header>
-	<ul class="bar">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash.'#item-'.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
+	<ul class="navbar navbar-top desktop-hidden">
+		<li><a href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li><a href="<?php echo $query.'next='.$currentItemHash.'&amp;open'; ?>">Next ></a></li>
+		<li><a href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </header>
 
 
-
 <!--BEGIN of I-HEADER -->
 <div class="i-header">
-	
 	<!--	 TITLE -->
 	<h1 class="i-title">
-		<a class="" target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>"><?php echo $item['title']; ?></a>
+		<a target="_blank"<?php echo ($redirector==='noreferrer'?' rel="noreferrer"':''); ?> href="<?php echo ($redirector!='noreferrer'?$redirector:'').$item['link']; ?>"><?php echo $item['title']; ?></a>
 	</h1>
-	<!--	FAVICON	-->
-	<?php if ($addFavicon) { ?><img class="i-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
-	<!--	AUTHOR -->
-	<span class="i-author small"><a  href="<?php echo '?currentHash='.substr($currentItemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
-	<!--	DATE -->
-	<span class="i-date small"><?php echo $item['time']['list']; ?></span>
-
 </div>
 <!-- END of I-HEADER -->
 
-	
+<div class="i-main-header">
+	<!--	FAVICON	-->
+	<?php if ($addFavicon || $addFavicon) { ?><img class="i-favicon" src="<?php echo $item['favicon']; ?>" height="16px" width="16px" title="favicon" alt="favicon"/><?php } ?>
+	<!--	AUTHOR -->
+	<span class="i-author"><a  href="<?php echo '?currentHash='.substr($currentItemHash, 0, 6); ?>"><?php echo $item['author']; ?></a></span>
+	<!--	DATE -->
+	<span class="i-date"><?php echo $item['time']['list']; ?></span>
+</div>
+
 
 <!--	BEGIN of I-MAIN -->
 <div class="i-main">
-	
 	<!--	CONTENT -->
 	<?php echo $item['content']; ?>
-
 </div>
 <!--	END of I-MAIN -->
-				
 
 
 <!--	BEGIN of I-FOOTER -->
 <div id="i-footer">
 
-	<ul id="i-menu" class="big">
-		  <li class="btn btn-primary"><a class="item-shaarli" href="<?php echo $query.'shaarli='.$currentItemHash; ?>"><span class="label label-expanded">Share</span></a></li>
-		  <li>
-			<?php if ($item['read'] == 1) { ?><a class="item-mark-as" href="<?php echo $query.'unread='.$currentItemHash; ?>">Mark as unread</a>
-			<?php } else { ?><a class="item-mark-as" href="<?php echo $query.'read='.$currentItemHash; ?>">Mark as read</a>
-			<?php } ?>
-		</li>
-<!--
-		<li><a class="item-shaarli" href="<?php echo $query.'shaarli='.$CurrentItemHash; ?>"><span class="label label-expanded">Keep unread</span></a></li>
--->
-	 </ul>
+	<div class="i-menu-fixed">
+		
+		<ul class="menu i-menu-back phone-hidden">
+			<li class="btn"><a class="" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt; Items</a></li>
+		</ul>
+
+		<ul  class="menu i-menu-share">
+			  <li class="btn"><a class="item-shaarli" href="<?php echo $query.'shaarli='.$currentItemHash; ?>">Share</a></li>
+		</ul>
+			
+		<ul  class="menu i-menu-star">  
+			<li class="btn">
+				<?php if (isset($item['starred']) && $item['starred']===1) { ?>
+				<a class="item-starred" href="<?php echo $query.'unstar='.$currentItemHash; ?>">Unstar</a>
+				<?php } else { ?>
+				<a class="item-starred" href="<?php echo $query.'star='.$currentItemHash; ?>">Star</a>
+				<?php }?>
+			</li>
+		</ul>	
+		
+		<ul class="menu i-menu-read">  
+			  <li class="btn">
+				<?php if ($item['read'] == 1) { ?><a class="item-mark-as" href="<?php echo $query.'unread='.$currentItemHash; ?>">Mark as unread</a>
+				<?php } else { ?><a class="item-mark-as" href="<?php echo $query.'read='.$currentItemHash; ?>">Mark as read</a>
+				<?php } ?>
+			</li>
+		</ul>	
+		
+		<ul class="menu i-menu-next">
+				<li class="btn"><a class="" href="<?php echo $query.'previous='.$currentItemHash.'&amp;open'; ?>">&lt; Prev.</a></li>
+				<li class="btn"><a  href="<?php echo $query.'next='.$currentItemHash.'&amp;open'; ?>">Next ></a></li>
+			</ul>
+		
+		<ul class="menu i-menu-top phone-hidden">
+			<li class="btn"><a class="" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		</ul>
+
+	</div>
 
 </div>
 <!--	END of I-FOOTER -->
 
 
-<div>
-	<ul class="menucom">
-		<li><a href="<?php echo $query.'add'; ?>" class="admin" title="Add a new feed">Add a new feed</a></li>
-		<?php if (Session::isLogged()) { ?><li><a href="?logout" class="admin" title="Logout">Logout</a></li>
-		<?php } else { ?><li><a href="?login">Login</a></li><?php } ?>
-		<?php if ($kf->kfc->isLogged()) { ?><li><a href="?config" class="admin" title="Configuration">Configuration</a></li><?php } ?>
-		<li><a href="<?php echo $query.'help'; ?>" title="Help : how to use KrISS feed">Help</a></li>
-		<li class="small about pr1"><a href="http://github.com/tontof/kriss_feed">KrISS feed <?php echo $version; ?></a> by <a href="http://tontof.net">Tontof</a></li>
-		<li class="smaller about pr1">(<a href="http://github.com/shrk69/kriss_feed">Alternative template</a> by shrk)</li>
-		<li class="small about pr1"><a href="?tpl=std">Switch to standard template</a></li>
-	</ul>
-</div>
-
-
 <footer>
-	<ul class="bar fixdown">
-		<li ><a class="txtleft pl1" href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
-		<li><a class="txtcenter" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
-		<li ><a class="txtright pr1" href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
+	<ul  class="navbar navbar-bottom desktop-hidden">
+		<li><a href="<?php  echo $query.'current='.$currentItemHash; ?>" Title="Back to item list">&lt;</a></li>
+		<li><a href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#haut"  onClick="window.scrollTo(0,0);return false;">Top ^</a></li>
+		<li><a href="<?php  echo $query.'current='.$currentItemHash.'&amp;open'; ?>#i-footer"  onClick="scrollid('i-footer');return false;">Menu</a></li>
 	</ul>
 </footer>	
 
-	
+</div>
+<!-- END of IL-MAIN-CONTAINER -->	
 	
 	
 <?php
@@ -6896,8 +7533,7 @@ dd {
           <div id="paging-down">
             <?php if (!empty($paging)) {FeedPage::pagingTpl();} ?>
           </div>
-          <a href="?tpl=alt">Switch to alternative template</a>
-        </div>
+          </div>
         <div id="minor-container" class="span3 full-height minor-container">
           <?php FeedPage::listFeedsTpl(); ?>
         </div>
@@ -11617,13 +12253,12 @@ if (isset($_GET['login'])) {
         }
     }
     MyTool::redirect($query);
-} elseif ((isset($_GET['star'])
-           || isset($_GET['unstar']))
-          && $kfc->isLogged()) {
+} elseif ((isset($_GET['star']) || isset($_GET['unstar'])))  { 
+	         
     // mark all as starred : item, feed, folder, all
     $kf->loadData();
     $ks->loadData();
-
+	 
     $starred = 1;
     if (isset($_GET['star'])) {
         $hash = $_GET['star'];
@@ -11638,17 +12273,29 @@ if (isset($_GET['login'])) {
         $starred = 0;
 
         $needSave = $ks->markItem($hash, $starred);
-    }
-    if ($needSave) {
-        $ks->writeData();
-    }
-
-    // type : 'feed', 'folder', 'all', 'item'
+    }	
+    
+    /*$hashr = $hash;
+	$read = 1;
+		$needSavef = $kf->mark($hash, $read);
+		if ($needSavef) {
+			$kf->writeData();
+		}   */
+		
+    if ($kfc->isLogged()) {
+		if ($needSave) {
+			$ks->writeData();
+		 }
+	
+	} /* end if isLogged*/
+	
+	 // type : 'feed', 'folder', 'all', 'item'
     $type = $kf->hashType($hash);
 
     if ($type === 'item') {
         $query .= 'current='.$hash.'&open';
     }
+   
     MyTool::redirect($query);
 } elseif (isset($_GET['stars']) && $kfc->isLogged()) {
     $ks->loadData();
